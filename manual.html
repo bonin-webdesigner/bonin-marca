@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Bonin - Manual da Marca</title>
+    <link rel="icon" type="image/x-icon" href="img/favico.png">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;family=Noto+Sans:wght@100..900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2DA6FF",
+                        "terracotta": "#2DA6FF",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#1a1a1a",
+                        "charcoal": "#121212",
+                        "surface": "#242424",
+                        "border-muted": "#333333"
+                    },
+                    fontFamily: {
+                        "display": ["Source Sans Pro", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+            background: radial-gradient(ellipse 125% 100% at 95% 75%, rgb(100 140 200 / .3) 0%, transparent 55%), radial-gradient(ellipse 90% 75% at 100% 100%, rgb(26 58 110 / .85) 0%, transparent 70%), linear-gradient(160deg, #04050c 0%, #060b17 100%);
+            color: white;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        @media (max-width: 767px) {
+            #sidebar {
+                display: none;
+            }
+            #sidebar.sidebar-open {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-white antialiased">
+    <div class="flex h-screen w-full overflow-hidden">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 md:static w-72 flex-shrink-0 flex flex-col border-r border-border-muted bg-charcoal p-6 gap-8">
+            <div class="flex items-center gap-3">
+                <div class="flex flex-col">
+                    <img src="img/Logo.webp" width="150" height="auto" alt="Bonin Logo">
+                </div>
+            </div>
+            <nav class="flex flex-col gap-1">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface text-white" href="manual.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">menu_book</span>
+                    <span class="text-sm font-medium">Manual da Marca e <br>  Paleta de Cores</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="logo.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">text_fields</span>
+                    <span class="text-sm font-medium">Logos e Tipografia</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="paleta.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">note_alt</span>
+                    <span class="text-sm font-medium"> Papéis Timbrados e Capas de Linkedin & Meet Teams</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="assinaturas.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">email</span>
+                    <span class="text-sm font-medium">Assinaturas de E-mail</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="ppt/documentacao-ppt.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">developer_guide</span>
+                    <span class="text-sm font-medium">Documentação PPT</span>
+                </a>
+            </nav>
+            
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-1 flex flex-col overflow-y-auto">
+            <!-- Mobile Top Bar -->
+            <div class="md:hidden flex items-center justify-between px-4 py-3 bg-charcoal border-b border-border-muted sticky top-0 z-30">
+                <img src="img/Logo.webp" width="100" height="auto" alt="Bonin Logo">
+                <button onclick="toggleSidebar()" class="text-white p-1">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+            <!-- Editorial Layout Container -->
+            <div class="flex-1 px-4 md:px-10 py-6 md:py-12 max-w-6xl mx-auto w-full">
+                <div class="mb-12">
+                    <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Manual da Marca</h1>
+                    <p class="text-base md:text-xl text-gray-400 max-w-2xl leading-relaxed">
+                        O guia definitivo para o sistema de identidade visual da Bonin. Princípios essenciais para logotipos, aplicação de cores, tipografia e padrões editoriais.
+                    </p>
+                </div>
+                <!-- Main Preview Card -->
+                <div class="bg-surface rounded-xl overflow-hidden border border-border-muted flex flex-col group">
+                    <div class="aspect-[16/9] bg-background-dark relative overflow-hidden">
+                        <img alt="Brand Manual Preview"
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+                            data-alt="A high-end editorial spread of a minimalist brand manual laid out on a dark slate gray surface. The photography uses dramatic low-key lighting with sharp shadows, highlighting the clean Swiss typography and vibrant terracotta accents of the document. The overall mood is sophisticated, professional, and modern, fitting a high-tech brand asset management portal."
+                            src="img/bonin-mokeup.webp" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-60">
+                        </div>
+                        <div class="absolute bottom-8 left-8">
+                            <div
+                                class="inline-flex items-center px-3 py-1 rounded bg-terracotta text-white text-[10px] font-bold uppercase tracking-widest mb-3">
+                                COMUNICADO OFICIAL
+                            </div>
+                            <h3 class="text-3xl font-bold text-white leading-tight">Manual da Marca</h3>
+                        </div>
+                    </div>
+                    <!-- Metadata Bar -->
+                    <div class="px-4 md:px-8 py-4 bg-[#1a1a1a] flex flex-col md:flex-row md:items-center gap-4 md:justify-between border-b border-border-muted">
+                        <div class="flex flex-wrap gap-4 md:gap-8">
+                            <div class="flex flex-col">
+                                <span class="text-[10px] uppercase text-gray-500 font-bold tracking-wider">Formato</span>
+                                <span class="text-sm font-medium text-gray-300">Documento PDF</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] uppercase text-gray-500 font-bold tracking-wider">Tamanho do Arquivo</span>
+                                <span class="text-sm font-medium text-gray-300">11.4 MB</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] uppercase text-gray-500 font-bold tracking-wider">Páginas</span>
+                                <span class="text-sm font-medium text-gray-300">15 Folhas</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] uppercase text-gray-500 font-bold tracking-wider">Última Atualização</span>
+                                <span class="text-sm font-medium text-gray-300">11 de Maio, 2026</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                            <a href="img/BRAND KIT_Publico/01. MANUAL MARCA_BONIN_ COLAB.pdf" target="_blank"
+                                rel="noopener noreferrer"><button
+                                    class="h-12 px-5 bg-terracotta text-white font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-[#1e8fd5] transition-colors text-sm">
+                                    <span class="material-symbols-outlined"
+                                        style="font-variation-settings: 'FILL' 1;">open_in_new</span>
+                                    Abrir Manual
+                                </button></a>
+                            <a href="img/BRAND KIT_Publico/01. MANUAL MARCA_BONIN_ COLAB.pdf" download><button
+                                    class="h-12 px-5 bg-transparent text-gray-400 border border-border-muted font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-white/5 hover:text-white transition-all text-sm">
+                                    <span class="material-symbols-outlined">download</span>
+                                    Baixar
+                                </button></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand Colors Section -->
+                <section class="flex flex-col gap-6 border-t border-border-muted pt-8 mt-20">
+                    <h2 class="text-white text-2xl font-bold uppercase tracking-wider">Paleta de Cores</h2>
+                    <div>
+                        <h3 class="text-white text-1xl  uppercase tracking-wider">Cores Primárias</h3><br>
+                        <div class="flex flex-wrap gap-8">
+
+                            <div class="flex items-center gap-4 cursor-pointer group">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-[#161634] border border-border-muted shadow-inner">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-white font-bold uppercase text-sm tracking-widest">Primária Azul
+                                        Escuro</span>
+                                    <button
+                                        onclick="navigator.clipboard.writeText('#161634'); const azulEscuro = this; azulEscuro.innerText = 'Copiado!'; setTimeout(() => azulEscuro.innerText = '#161634', 1500);"
+                                        title="Clique para copiar"
+                                        class="text-gray-400 text-xs font-mono group-hover:text-primary transition-colors text-left cursor-pointer focus:outline-none">
+                                        #161634
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-[#6BA8D7] border border-border-muted shadow-inner">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-white font-bold uppercase text-sm tracking-widest">Primária Azul
+                                        Claro</span>
+                                    <button
+                                        onclick="navigator.clipboard.writeText('#6BA8D7'); const azulClaro = this; azulClaro.innerText = 'Copiado!'; setTimeout(() => azulClaro.innerText = '#6BA8D7', 1500);"
+                                        title="Clique para copiar"
+                                        class="text-gray-400 text-xs font-mono group-hover:text-primary transition-colors text-left cursor-pointer focus:outline-none">
+                                        #6BA8D7
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-white text-1xl font uppercase tracking-wider pb-3 pt-6">Cores Secundárias</h3>
+
+                        <div class="flex flex-wrap gap-8">
+
+                            <div class="flex items-center gap-4 group ">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-[#1A405D] border border-border-muted shadow-inner">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-white font-bold uppercase text-sm tracking-widest">Azul Petróleo Escuro</span>
+                                    <button
+                                        onclick="navigator.clipboard.writeText('#1A405D'); const azulPetroleoEscuro = this; azulPetroleoEscuro.innerText = 'Copiado!'; setTimeout(() => azulPetroleoEscuro.innerText = '#1A405D', 1500);"
+                                        title="Clique para copiar"
+                                        class="text-gray-400 text-xs font-mono group-hover:text-primary transition-colors text-left cursor-pointer focus:outline-none">
+                                        #1A405D
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-[#7B7B7B] border border-border-muted shadow-inner">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-white font-bold uppercase text-sm tracking-widest">Cinza Fosco</span>
+                                    <button
+                                        onclick="navigator.clipboard.writeText('#7B7B7B'); const cinzaFosco = this; cinzaFosco.innerText = 'Copiado!'; setTimeout(() => cinzaFosco.innerText = '#7B7B7B', 1500);"
+                                        title="Clique para copiar"
+                                        class="text-gray-400 text-xs font-mono group-hover:text-primary transition-colors text-left cursor-pointer focus:outline-none">
+                                        #7B7B7B
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-[#BBBBBB] border border-border-muted shadow-inner">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-white font-bold uppercase text-sm tracking-widest">Cinza Claro</span>
+                                    <button
+                                        onclick="navigator.clipboard.writeText('#BBBBBB'); const cinzaClaro = this; cinzaClaro.innerText = 'Copiado!'; setTimeout(() => cinzaClaro.innerText = '#BBBBBB', 1500);"
+                                        title="Clique para copiar"
+                                        class="text-gray-400 text-xs font-mono group-hover:text-primary transition-colors text-left cursor-pointer focus:outline-none">
+                                        #BBBBBB
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-[#F1F1F1] border border-border-muted shadow-inner">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-white font-bold uppercase text-sm tracking-widest">Cinza Muito Claro</span>
+                                    <button
+                                        onclick="navigator.clipboard.writeText('#F1F1F1'); const cinzaMuitoClaro = this; cinzaMuitoClaro.innerText = 'Copiado!'; setTimeout(() => cinzaMuitoClaro.innerText = '#F1F1F1', 1500);"
+                                        title="Clique para copiar"
+                                        class="text-gray-400 text-xs font-mono group-hover:text-primary transition-colors text-left cursor-pointer focus:outline-none">
+                                        #F1F1F1
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-[#FFFFFF] border border-border-muted shadow-inner">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-white font-bold uppercase text-sm tracking-widest">Branco</span>
+                                    <button
+                                        onclick="navigator.clipboard.writeText('#FFFFFF'); const branco = this; branco.innerText = 'Copiado!'; setTimeout(() => branco.innerText = '#FFFFFF', 1500);"
+                                        title="Clique para copiar"
+                                        class="text-gray-400 text-xs font-mono group-hover:text-primary transition-colors text-left cursor-pointer focus:outline-none">
+                                        #FFFFFF
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 group cursor-pointer">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-[#000000] border border-border-muted shadow-inner">
+                                </div>
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-white font-bold uppercase text-sm tracking-widest">Preto</span>
+                                    <button
+                                        onclick="navigator.clipboard.writeText('#000000'); const preto = this; preto.innerText = 'Copiado!'; setTimeout(() => preto.innerText = '#000000', 1500);"
+                                        title="Clique para copiar"
+                                        class="text-gray-400 text-xs font-mono group-hover:text-primary transition-colors text-left cursor-pointer focus:outline-none">
+                                        #000000
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+                
+            </div>
+
+            
+            <!-- Footer -->
+            <footer
+                class="mt-auto py-6 px-4 md:py-10 md:px-10 border-t border-border-muted flex flex-col md:flex-row items-start md:items-center gap-3 justify-between text-gray-500">
+                <p class="text-xs">Bonin Engenharia e Consultoria © 2026 Todos os direitos reservados</p>
+                <div class="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
+                    <a class="hover:text-white" href="https://www.bonin.eng.br/politica-privacidade/">Política de Privacidade</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <!-- Mobile Sidebar Backdrop -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-60 z-40 hidden" onclick="toggleSidebar()"></div>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('sidebar-open');
+            document.getElementById('sidebar-backdrop').classList.toggle('hidden');
+        }
+    </script>
+</body>
+
+</html>

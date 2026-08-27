@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonin — Documentação do PPT 2026</title>
+  <link rel="icon" type="image/x-icon" href="img/favico.png">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&family=Noto+Sans:wght@100..900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2DA6FF",
+            "terracotta": "#2DA6FF",
+            "background-light": "#f8f6f6",
+            "background-dark": "#1a1a1a",
+            "charcoal": "#121212",
+            "surface": "#242424",
+            "border-muted": "#333333"
+          },
+          fontFamily: { "display": ["Source Sans Pro", "sans-serif"] },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+      background: radial-gradient(ellipse 125% 100% at 95% 75%, rgb(100 140 200 / .3) 0%, transparent 55%), radial-gradient(ellipse 90% 75% at 100% 100%, rgb(26 58 110 / .85) 0%, transparent 70%), linear-gradient(160deg, #04050c 0%, #060b17 100%);
+      color: white;
+    }
+
+    .scrooll-interno {
+      --sb-track-color: #232E33;
+      --sb-thumb-color: #00b2ff;
+      --sb-size: 6px;
+    }
+
+    .scrooll-interno::-webkit-scrollbar {
+      width: var(--sb-size)
+    }
+
+    .scrooll-interno::-webkit-scrollbar-track {
+      background: var(--sb-track-color);
+      border-radius: 5px;
+    }
+
+    .scrooll-interno::-webkit-scrollbar-thumb {
+      background: var(--sb-thumb-color);
+      border-radius: 5px;
+
+    }
+
+    @supports not selector(::-webkit-scrollbar) {
+      .scrooll-interno {
+        scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+      }
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    @media (max-width: 767px) {
+      #sidebar {
+        display: none;
+      }
+
+      #sidebar.sidebar-open {
+        display: flex;
+      }
+    }
+
+    /* ── TAB PAGES ── */
+    .page {
+      display: none;
+      padding: 40px 48px;
+      max-width: 1000px;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      margin-bottom: 36px;
+    }
+
+    .page-hero h1 {
+      color: #f1f5f9;
+      line-height: 1.25;
+    }
+
+    .page-hero p {
+      font-size: 15px;
+      color: #94a3b8;
+      max-width: 650px;
+      line-height: 1.65;
+    }
+
+    /* ── SLIDE BADGE ── */
+    .slide-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #60a5fa;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      letter-spacing: .04em;
+    }
+
+    .slide-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #60a5fa;
+    }
+
+    /* ── SLIDE PLACEHOLDER ── */
+    .slide-placeholder {
+      width: 100%;
+      border-radius: 8px;
+      border: 2px dashed #334155;
+      background: rgba(255, 255, 255, .03);
+      margin: 20px 0;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4b5563;
+      font-size: 13px;
+      gap: 8px;
+    }
+
+    /* ── CALLOUT BOXES ── */
+    .callout {
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .callout .icon {
+      font-size: 17px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .callout-title {
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .callout.info {
+      background: rgba(45, 166, 255, .08);
+      border-left: 3px solid #2DA6FF;
+      color: #bfdbfe;
+    }
+
+    .callout.tip {
+      background: rgba(34, 197, 94, .08);
+      border-left: 3px solid #22c55e;
+      color: #bbf7d0;
+    }
+
+    .callout.warning {
+      background: rgba(245, 158, 11, .08);
+      border-left: 3px solid #f59e0b;
+      color: #fde68a;
+    }
+
+    .callout.danger {
+      background: rgba(239, 68, 68, .08);
+      border-left: 3px solid #ef4444;
+      color: #fecaca;
+    }
+
+    /* ── RULE TABLE ── */
+    .rule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    .rule-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: #1e293b;
+      color: #e2e8f0;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      border-bottom: 1px solid #334155;
+    }
+
+    .rule-table th:first-child {
+      border-radius: 8px 0 0 0;
+    }
+
+    .rule-table th:last-child {
+      border-radius: 0 8px 0 0;
+    }
+
+    .rule-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid #1e293b;
+      vertical-align: top;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+
+    .rule-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .rule-table tr:nth-child(even) td {
+      background: rgba(255, 255, 255, .02);
+    }
+
+    /* ── PILLS ── */
+    .pill {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .pill.can {
+      background: rgba(34, 197, 94, .15);
+      color: #4ade80;
+    }
+
+    .pill.no {
+      background: rgba(239, 68, 68, .15);
+      color: #f87171;
+    }
+
+    .pill.care {
+      background: rgba(245, 158, 11, .15);
+      color: #fbbf24;
+    }
+
+    /* ── STEP LIST ── */
+    .steps {
+      list-style: none;
+      margin: 16px 0;
+      padding: 0;
+    }
+
+    .steps li {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      min-width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #2DA6FF;
+      color: white;
+      font-weight: 700;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .steps li p {
+      color: #94a3b8;
+      margin-top: 3px;
+      font-size: 14px;
+    }
+
+    .steps li strong {
+      color: #e2e8f0;
+      font-size: 15px;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      font-size: 15px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin: 30px 0 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .section-header:first-child {
+      margin-top: 0;
+    }
+
+    /* ── GRID 2col ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    /* ── INFO CARD ── */
+    .info-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .info-card h4 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .info-card p,
+    .info-card li {
+      font-size: 13.5px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .info-card ul {
+      padding-left: 18px;
+    }
+
+    /* ── HOME HERO ── */
+    .home-hero {
+      background: linear-gradient(135deg, #0d1b35 0%, #0f2550 60%, #071a3e 100%);
+      border: 1px solid #1e3a6e;
+      border-radius: 12px;
+      padding: 40px;
+      color: white;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .home-hero::before {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: 0;
+      width: 280px;
+      height: 280px;
+      background-image: url(img/ppt-logo.png);
+      background-repeat: no-repeat;
+    }
+
+    .home-hero h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -.4px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .home-hero h1 span {
+      color: #60a5fa;
+    }
+
+    .home-hero p {
+      color: rgba(255, 255, 255, .65);
+      font-size: 15px;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .home-hero .badges {
+      display: flex;
+      gap: 8px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .home-hero .badge-item {
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .12);
+      color: rgba(255, 255, 255, .8);
+      font-size: 11px;
+      padding: 4px 11px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* ── QUICK NAV ── */
+    .quick-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .quick-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 18px;
+      cursor: pointer;
+      transition: all .15s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .quick-card:hover {
+      border-color: #2DA6FF;
+      transform: translateY(-2px);
+    }
+
+    .quick-card .qc-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .quick-card .qc-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 3px;
+    }
+
+    .quick-card .qc-desc {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    /* ── PPT SIDEBAR NAV ── */
+    .ppt-section-label {
+      padding: 12px 8px 4px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #4b5563;
+      font-weight: 600;
+    }
+
+    .ppt-nav a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      transition: all .15s;
+      border-radius: 6px;
+      line-height: 1.3;
+    }
+
+    .ppt-nav a:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .ppt-nav a.active {
+      color: #60a5fa;
+      background: rgba(96, 165, 250, .08);
+      font-weight: 500;
+    }
+
+    .ppt-nav a .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 20px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, .06);
+      font-size: 10px;
+      font-family: monospace;
+      color: #6b7280;
+      flex-shrink: 0;
+    }
+
+    .ppt-nav a.active .num {
+      background: rgba(96, 165, 250, .15);
+      color: #60a5fa;
+    }
+
+    /* ── TOPBAR ── */
+    #topbar {
+      background: rgba(12, 12, 18, .85);
+      border-bottom: 1px solid #1e293b;
+      padding: 12px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+    }
+
+    .topbar-breadcrumb {
+      font-size: 13px;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .topbar-breadcrumb .cur {
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    .topbar-version {
+      background: #2DA6FF;
+      color: white;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    code {
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12.5px;
+      color: #7dd3fc;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 24px 20px;
+      }
+
+      .quick-nav {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      #topbar {
+        padding: 12px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body class="text-white antialiased">
+  <div class="flex h-screen w-full overflow-hidden">
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar"
+      class="fixed inset-y-0 left-0 z-50 md:static w-72 flex-shrink-0 flex flex-col border-r border-border-muted bg-charcoal overflow-y-auto">
+      <div class="p-6 pb-4">
+        <img src="img/Logo.webp" width="150" height="auto" alt="Bonin Logo">
+      </div>
+      <!-- Page Navigation -->
+      <nav class="flex flex-col gap-1 px-3">
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors"
+          href="https://www.bonin.eng.br/marca/index.html">
+          <span class="material-symbols-outlined"
+            style="font-size: 20px; font-variation-settings: 'FILL' 1;">menu_book</span>
+          <span class="text-sm font-medium">Voltar para Manual da Marca</span>
+        </a>
+
+      </nav>
+      <!-- Divider -->
+      <div class="border-t border-border-muted mx-3 my-4"></div>
+      <!-- PPT Internal Navigation -->
+      <div class="scrooll-interno flex-1 px-3 pb-6 overflow-y-auto">
+        <div class="ppt-section-label">Introdução</div>
+        <div class="ppt-nav flex flex-col gap-0.5">
+          <a href="javascript:void(0)" onclick="show('intro')" class="active" id="nav-intro"><span class="num">①</span>
+            Visão Geral</a>
+        </div>
+        <div class="ppt-section-label">Slides de Capa</div>
+        <div class="ppt-nav flex flex-col gap-0.5">
+          <a href="javascript:void(0)" onclick="show('s1')" id="nav-s1"><span class="num">1</span> Capa
+          </a>
+          <a href="javascript:void(0)" onclick="show('s2')" id="nav-s2"><span class="num">2</span> Capa
+            Institucional</a>
+          <a href="javascript:void(0)" onclick="show('s4')" id="nav-s4"><span class="num">4</span> Capa com Foto
+          </a>
+          <a href="javascript:void(0)" onclick="show('s24')" id="nav-s24"><span class="num">24</span> Título
+            Minimalista</a>
+          <a href="javascript:void(0)" onclick="show('s31')" id="nav-s31"><span class="num">31</span> Encerramento</a>
+        </div>
+        <div class="ppt-section-label">Slides de Conteúdo</div>
+        <div class="ppt-nav flex flex-col gap-0.5">
+          <a href="javascript:void(0)" onclick="show('s3')" id="nav-s3"><span class="num">3/5</span> Título +
+            Subtítulo</a>
+          <a href="javascript:void(0)" onclick="show('s6')" id="nav-s6"><span class="num">6/7</span> Texto Simples</a>
+          <a href="javascript:void(0)" onclick="show('s8')" id="nav-s8"><span class="num">8</span> Hexágonos com
+            Ícones</a>
+          <a href="javascript:void(0)" onclick="show('s11')" id="nav-s11"><span class="num">11</span> Destaque de
+            Tópico</a>
+          <a href="javascript:void(0)" onclick="show('s12')" id="nav-s12"><span class="num">12</span> Visão Macro
+            (Círculos)</a>
+          <a href="javascript:void(0)" onclick="show('s20')" id="nav-s20"><span class="num">20/21</span> Listas de
+            Pontos</a>
+          <a href="javascript:void(0)" onclick="show('s22')" id="nav-s22"><span class="num">22</span> Diagrama de
+            Venn</a>
+        </div>
+        <div class="ppt-section-label">Slides de Processo</div>
+        <div class="ppt-nav flex flex-col gap-0.5">
+          <a href="javascript:void(0)" onclick="show('s13')" id="nav-s13"><span class="num">13/14</span> Timeline</a>
+          <a href="javascript:void(0)" onclick="show('s15')" id="nav-s15"><span class="num">15/16</span> Fluxo de
+            Onda</a>
+          <a href="javascript:void(0)" onclick="show('s17')" id="nav-s17"><span class="num">17/18</span> Radar de
+            Etapas</a>
+        </div>
+        <div class="ppt-section-label">Slides de Dados</div>
+        <div class="ppt-nav flex flex-col gap-0.5">
+          <a href="javascript:void(0)" onclick="show('s19')" id="nav-s19"><span class="num">19</span> Gráfico de
+            Barras</a>
+          <a href="javascript:void(0)" onclick="show('s23')" id="nav-s23"><span class="num">23</span> Calendário</a>
+          <a href="javascript:void(0)" onclick="show('s25')" id="nav-s25"><span class="num">25/26</span> Barras
+            Verticais</a>
+          <a href="javascript:void(0)" onclick="show('s27')" id="nav-s27"><span class="num">27/28</span> Cards de
+            Métricas</a>
+          <a href="javascript:void(0)" onclick="show('s29')" id="nav-s29"><span class="num">29</span> Círculos
+            Aninhados</a>
+          <a href="javascript:void(0)" onclick="show('s30')" id="nav-s30"><span class="num">30</span> Gráfico de
+            Pizza</a>
+        </div>
+        <div class="ppt-section-label">Recursos</div>
+        <div class="ppt-nav flex flex-col gap-0.5">
+          <a href="javascript:void(0)" onclick="show('icons')" id="nav-icons"><span class="num">9/10</span> Banco de
+            Ícones</a>
+          <a href="javascript:void(0)" onclick="show('rules')" id="nav-rules"><span class="num">✓</span> Regras
+            Gerais</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 overflow-y-auto">
+
+      <!-- Mobile Top Bar -->
+      <div
+        class="md:hidden flex items-center justify-between px-4 py-3 bg-charcoal border-b border-border-muted sticky top-0 z-30">
+        <img src="img/Logo.webp" width="100" height="auto" alt="Bonin Logo">
+        <button onclick="toggleSidebar()" class="text-white p-1">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+
+      <!-- Topbar / Breadcrumb -->
+      <div id="topbar">
+        <div class="topbar-breadcrumb">
+          <span>Bonin</span>
+          <span>›</span>
+          <span>Template PPT</span>
+          <span>›</span>
+          <span class="cur" id="breadcrumb-text">Visão Geral</span>
+        </div>
+        <div class="topbar-version">2026</div>
+      </div>
+
+      <!-- ============================  PAGES  ============================ -->
+
+      <!-- INTRO -->
+      <div id="page-intro" class="page active mx-auto">
+
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Template PPT <span>Bonin 2026</span></h1>
+          <p>Guia completo de uso do modelo de apresentação padrão. Aprenda como editar cada slide, o que pode e o que
+            não pode ser alterado.</p>
+        </div>
+
+
+        <!-- Main Preview Card -->
+        <div class="bg-surface rounded-xl overflow-hidden border border-border-muted flex flex-col group">
+          <div class="aspect-[16/9] bg-background-dark relative overflow-hidden">
+            <img alt="Brand Manual Preview"
+              class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+              data-alt="A high-end editorial spread of a minimalist brand manual laid out on a dark slate gray surface. The photography uses dramatic low-key lighting with sharp shadows, highlighting the clean Swiss typography and vibrant terracotta accents of the document. The overall mood is sophisticated, professional, and modern, fitting a high-tech brand asset management portal."
+              src="img/mockup.webp" />
+            <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-60">
+            </div>
+            <div class="absolute bottom-8 left-8">
+
+              <h3 class="text-3xl font-bold text-white leading-tight">Template PPT Bonin 2026</h3>
+            </div>
+          </div>
+          <!-- Metadata Bar -->
+          <div
+            class="px-4 md:px-8 py-4 bg-[#1a1a1a] flex flex-col md:flex-row md:items-center gap-4 md:justify-between border-b border-border-muted">
+            <div class="flex flex-wrap gap-4 md:gap-8">
+              <div class="flex flex-col">
+                <span class="text-[10px] uppercase text-gray-500 font-bold tracking-wider">Formato</span>
+                <span class="text-sm font-medium text-gray-300">Documento PPT</span>
+              </div>
+
+              <div class="flex flex-col">
+                <span class="text-[10px] uppercase text-gray-500 font-bold tracking-wider">Slides</span>
+                <span class="text-sm font-medium text-gray-300">31 Slides</span>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <a href="Bonin _ PPT Modelo2026.pptx" download><button
+                  class="h-12 px-5 bg-transparent text-gray-400 border border-border-muted font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-white/5 hover:text-white transition-all text-sm">
+                  <span class="material-symbols-outlined">download</span>
+                  Baixar
+                </button></a>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="section-header">Acesso rápido por categoria</h2>
+        <div class="quick-nav">
+          <a class="quick-card" href="javascript:void(0)" onclick="show('s4')">
+            <div class="qc-icon">🖼️</div>
+            <div class="qc-title">Capas com Foto</div>
+            <div class="qc-desc">Slides 1, 4 e 31 — como substituir imagens</div>
+          </a>
+          <a class="quick-card" href="javascript:void(0)" onclick="show('s6')">
+            <div class="qc-icon">📝</div>
+            <div class="qc-title">Conteúdo Textual</div>
+            <div class="qc-desc">Slides 6, 7, 8 — textos, títulos e ícones</div>
+          </a>
+          <a class="quick-card" href="javascript:void(0)" onclick="show('s13')">
+            <div class="qc-icon">📅</div>
+            <div class="qc-title">Timelines &amp; Processos</div>
+            <div class="qc-desc">Slides 13–18 — fluxos e etapas</div>
+          </a>
+          <a class="quick-card" href="javascript:void(0)" onclick="show('s25')">
+            <div class="qc-icon">📊</div>
+            <div class="qc-title">Gráficos &amp; Dados</div>
+            <div class="qc-desc">Slides 19, 25–30 — métricas e gráficos</div>
+          </a>
+          <a class="quick-card" href="javascript:void(0)" onclick="show('icons')">
+            <div class="qc-icon">🔷</div>
+            <div class="qc-title">Banco de Ícones</div>
+            <div class="qc-desc">Slides 9 e 10 — ícones disponíveis</div>
+          </a>
+          <a class="quick-card" href="javascript:void(0)" onclick="show('rules')">
+            <div class="qc-icon">📋</div>
+            <div class="qc-title">Regras Gerais</div>
+            <div class="qc-desc">O que pode e não pode ser editado</div>
+          </a>
+        </div>
+
+        <div class="callout info">
+          <div>
+            <div class="callout-title">Como usar esta documentação</div>
+            Navegue pelo menu lateral para encontrar o slide que deseja usar. Cada página mostra o preview do slide, o
+            que pode ser editado e dicas de boas práticas.
+          </div>
+        </div>
+
+
+      </div>
+
+      <!-- PAGE s1 -->
+      <div id="page-s1" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 1 — Capa com Foto</h1>
+          <p>Slide de abertura com foto de fundo em tom escuro. Ideal para iniciar a apresentação com impacto.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide1.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Texto do título</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Substitua "Confiança para Moldar o Futuro!" pelo título da apresentação</td>
+            </tr>
+            <tr>
+              <td>Foto de fundo</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Apague a foto de exemplo, insira a sua e envie para trás</td>
+            </tr>
+            <tr>
+              <td>Camada de degradê azul</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não remova nem altere a cor — ela garante a legibilidade do texto</td>
+            </tr>
+            <tr>
+              <td>Logo Bonin no rodapé</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento fixo de identidade visual</td>
+            </tr>
+            <tr>
+              <td>Símbolo "B" decorativo</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento gráfico fixo da identidade</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <!-- PAGE s2 -->
+      <div id="page-s2" class="page mx-auto">
+        <div class="page-hero">
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 2 — Capa Institucional</h1>
+          <p>Slide de título principal sem foto — fundo escuro com símbolo decorativo. Use como alternativa mais sóbria
+            à capa com foto.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide2.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Título da apresentação</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua "Título apresentação" pelo seu</td>
+            </tr>
+            <tr>
+              <td>Subtítulo</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Preencha ou apague o subtítulo conforme necessidade</td>
+            </tr>
+            <tr>
+              <td>Fundo escuro e gradiente</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere o fundo</td>
+            </tr>
+            <tr>
+              <td>Símbolo "B" decorativo</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento fixo</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Use este slide quando não tiver uma foto disponível ou quiser um visual mais corporativo</div>
+        </div>
+      </div>
+
+      <!-- PAGE s4 -->
+      <div id="page-s4" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 4 — Capa com Foto </h1>
+          <p>Slide de destaque com foto ocupando todo o fundo. A foto fica atrás de uma camada com degradê azul
+            semitransparente, e o título aparece sobre ela. Este é o slide que requer atenção especial ao trocar a
+            imagem.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide4.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Foto de fundo</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>
+                <a href="#dica" style="text-decoration: underline;">Passo a passo para trocar foto</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Texto do título (ex: "ALESP")</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua pelo título ou nome do cliente</td>
+            </tr>
+            <tr>
+              <td>Camada de degradê azul sobre a foto</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Garante contraste do texto. Não apague nem mova</td>
+            </tr>
+            <tr>
+              <td>Linha vertical divisória azul</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento visual identitário</td>
+            </tr>
+            <tr>
+              <td>Logo Bonin no canto</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Identidade fixa</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout warning " id="dica">
+          <div>PASSO A PASSO para trocar a foto neste slide:</div>
+        </div>
+        <div class="callout info">
+          <div>1. Jogue para o lado a imagem de degradê</div>
+        </div>
+        <div class="callout info">
+          <div>2. Clique na foto de exemplo e pressione Delete</div>
+        </div>
+        <div class="callout info">
+          <div>3. Insira sua nova foto (Inserir → Imagens)</div>
+        </div>
+        <div class="callout info">
+          <div>4. Redimensione para cobrir todo o slide</div>
+        </div>
+        <div class="callout info">
+          <div>5. Clique com botão direito na foto → "Enviar para Trás" (Send to Back)</div>
+        </div>
+        <div class="callout info">
+          <div>6. O degradê e o título voltam automaticamente para frente, basta alinhar para o centro como estava antes
+          </div>
+        </div>
+        <div class="callout tip">
+          <div>Use fotos com boa iluminação — a camada escura vai diminuir o brilho</div>
+        </div>
+      </div>
+
+      <!-- PAGE s3 -->
+      <div id="page-s3" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slides 3 e 5 — Título com Texto de Apoio</h1>
+          <p>Slides de transição entre seções. Versão escura (slide 3) e versão clara (slide 5). Ambos têm o mesmo
+            layout: título grande à esquerda e texto de apoio à direita.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide3.png" alt=""></div>
+        <div class="slide-placeholder"><img src="img/slide5.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Título (ex: "Títulos»")</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua pelo nome da seção</td>
+            </tr>
+            <tr>
+              <td>Texto de apoio</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Opcional — use para contextualizar o que vem a seguir</td>
+            </tr>
+            <tr>
+              <td>Versão clara ou escura</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Use o slide 3 para tema escuro e o 5 para tema claro</td>
+            </tr>
+            <tr>
+              <td>Ícone de setas "»"</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento fixo da identidade visual</td>
+            </tr>
+            <tr>
+              <td>Logo no rodapé</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Fixo</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Use estes slides para anunciar cada seção da apresentação</div>
+        </div>
+        <div class="callout info">
+          <div>Mantenha o título curto (1–3 palavras)</div>
+        </div>
+      </div>
+
+      <!-- PAGE s6 -->
+      <div id="page-s6" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slides 6 e 7 — Conteúdo Simples (Texto + Visual)</h1>
+          <p>Slides de conteúdo padrão. O slide 6 é só texto (versão limpa) e o slide 7 adiciona hexágonos decorativos à
+            direita.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide6.png" alt=""></div>
+        <div class="slide-placeholder"><img src="img/slide7.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Texto principal</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua pelo seu conteúdo — evite parágrafos longos</td>
+            </tr>
+            <tr>
+              <td>Hexágonos do slide 7</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Você pode trocar o texto dentro dos hexágonos</td>
+            </tr>
+            <tr>
+              <td>Cores dos hexágonos</td>
+              <td><span class="pill care">⚠ Cuidado</span></td>
+              <td>Pode ajustar mas mantenha o padrão azul/escuro do template</td>
+            </tr>
+            <tr>
+              <td>Layout e posicionamento dos hexágonos</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não reposicione</td>
+            </tr>
+            <tr>
+              <td>Logo no rodapé</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Fixo</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout warning">
+          <div>Evite textos com mais de 5–6 linhas. Se precisar de mais, duplique o slide</div>
+        </div>
+        <div class="callout tip">
+          <div>No slide 7, use os hexágonos para contrastar dois pontos de vista ou conceitos</div>
+        </div>
+      </div>
+
+      <!-- PAGE s8 -->
+      <div id="page-s8" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 8 — Hexágonos com Ícones</h1>
+          <p>Layout com 4 blocos, cada um com um hexágono (que pode ter ícone) e texto ao lado. Disponível nos slides 9
+            e 10 um banco de ícones para usar aqui.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide8.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ícones dentro dos hexágonos</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Copie um ícone do banco de ícones (slides 9/10) e cole aqui</td>
+            </tr>
+            <tr>
+              <td>Títulos de cada bloco</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua "Título" pelo seu conteúdo</td>
+            </tr>
+            <tr>
+              <td>Textos descritivos</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua o Lorem Ipsum pelo texto real</td>
+            </tr>
+            <tr>
+              <td>Título do header (barra azul escura)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Edite o texto "ESCREVA SEU TEXTO"</td>
+            </tr>
+            <tr>
+              <td>Formato hexagonal dos ícones</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere a forma</td>
+            </tr>
+            <tr>
+              <td>Layout 2×2</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não adicione ou remova blocos</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Use ícones do mesmo estilo visual para manter coerência (veja slides 9 e 10)</div>
+        </div>
+        <div class="callout info">
+          <div>Mantenha textos curtos em cada bloco — máximo 3 linhas por item</div>
+        </div>
+      </div>
+
+      <!-- PAGE s11 -->
+      <div id="page-s11" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 11 — Destaque de Tópico com Abas</h1>
+          <p>Slide com o tópico principal em destaque e tags de navegação no canto superior direito (Objetivo, Conceito,
+            Estratégia).</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide11.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Texto do tópico principal</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua "Coloque aqui o tópico principal"</td>
+            </tr>
+            <tr>
+              <td>Texto descritivo</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua o texto de exemplo à direita</td>
+            </tr>
+            <tr>
+              <td>Labels das abas (Objetivo, Conceito, Estratégia)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Adapte ao seu fluxo de apresentação</td>
+            </tr>
+            <tr>
+              <td>Qual aba aparece como "ativa" (com borda)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Indique visualmente em qual etapa você está</td>
+            </tr>
+            <tr>
+              <td>Layout das abas</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não reposicione</td>
+            </tr>
+            <tr>
+              <td>Ícone de setas "»"</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento identitário</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Este slide funciona bem em sequência — duplique e ative uma aba diferente em cada slide para criar uma
+            sensação de progressão</div>
+        </div>
+      </div>
+
+      <!-- PAGE s12 -->
+      <div id="page-s12" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 12 — Visão Macro (Círculos Concêntricos)</h1>
+          <p>Diagrama de círculos concêntricos com 3 ou 4 camadas, cada uma com um rótulo e subtítulo.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide12.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rótulos (Objetivo, Conceito, Prática)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Adapte à sua estrutura conceitual</td>
+            </tr>
+            <tr>
+              <td>Subtítulos de cada camada</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Ex: "PONTO DE PARTIDA", "BASE DA COMUNICAÇÃO"</td>
+            </tr>
+            <tr>
+              <td>Círculos e posicionamento</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere o tamanho ou posição das formas</td>
+            </tr>
+            <tr>
+              <td>Número de camadas</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Mantenha as 3 camadas presentes</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Use este slide para apresentar hierarquias conceituais ou frameworks do "maior para o menor"</div>
+        </div>
+      </div>
+
+      <!-- PAGE s13 -->
+      <div id="page-s13" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slides 13 e 14 — Timeline Horizontal</h1>
+          <p>Linha do tempo horizontal com 5 pontos marcados. Versão escura (slide 13) e versão clara (slide 14).</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide13.png" alt=""></div>
+        <div class="slide-placeholder"><img src="img/slide14.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Labels de cada etapa (timeline 1–5)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Coloque datas, fases ou nomes de etapas</td>
+            </tr>
+            <tr>
+              <td>Número de pontos visíveis</td>
+              <td><span class="pill care">⚠ Cuidado</span></td>
+              <td>Pode ocultar marcadores, mas não adicione mais de 5</td>
+            </tr>
+            <tr>
+              <td>A linha base e o posicionamento dos pontos</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não mova a linha ou os círculos</td>
+            </tr>
+            <tr>
+              <td>O fundo decorativo circular</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento visual fixo</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Para destacar uma etapa específica, aumente o tamanho do texto daquela etapa ou mude a cor do marcador
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE s15 -->
+      <div id="page-s15" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slides 15 e 16 — Fluxo de Onda</h1>
+          <p>Diagrama em forma de onda com 4 pontos marcando etapas de uma jornada ou processo.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide15.png" alt=""></div>
+        <div class="slide-placeholder"><img src="img/slide16.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Labels dos pontos (Briefing, Objetivos, Conceito, Estratégia)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Adapte às etapas do seu processo</td>
+            </tr>
+            <tr>
+              <td>Ponto de destaque (hexágono azul)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Indique em que etapa a apresentação foca</td>
+            </tr>
+            <tr>
+              <td>A forma da onda</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento gráfico fixo</td>
+            </tr>
+            <tr>
+              <td>Posicionamento dos marcadores</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não reposicione</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Use o hexágono para indicar "onde estamos agora" no processo</div>
+        </div>
+      </div>
+
+      <!-- PAGE s17 -->
+      <div id="page-s17" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slides 17 e 18 — Radar de Etapas Verticais</h1>
+          <p>Diagrama com fundo de semicírculo concêntrico e 3 pontos distribuídos verticalmente, cada um com título,
+            descrição e tags.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide17.png" alt=""></div>
+        <div class="slide-placeholder"><img src="img/slide18.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Títulos de cada etapa</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua pelos nomes reais</td>
+            </tr>
+            <tr>
+              <td>Textos descritivos</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Descreva cada etapa</td>
+            </tr>
+            <tr>
+              <td>Tags/pills de cada etapa</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Use palavras-chave curtas</td>
+            </tr>
+            <tr>
+              <td>Fundo de semicírculos concêntricos</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento visual fixo</td>
+            </tr>
+            <tr>
+              <td>Posicionamento dos 3 pontos</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não mova os hexágonos centrais</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Ideal para apresentar 3 etapas de um projeto ou 3 pilares estratégicos</div>
+        </div>
+        <div class="callout info">
+          <div>Mantenha as tags curtas — máximo 2 palavras cada</div>
+        </div>
+      </div>
+
+      <!-- PAGE s19 -->
+      <div id="page-s19" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 19 — Gráfico de Barras Estilizado</h1>
+          <p>Slide de gráfico de barras com estética minimalista e linha de tendência pontilhada.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide19.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dados das barras</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Clique em cada barra para editar a altura</td>
+            </tr>
+            <tr>
+              <td>Linha de tendência</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Ajuste para refletir a curva real dos seus dados</td>
+            </tr>
+            <tr>
+              <td>Estilo visual (bordas arredondadas, cores)</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere a estética</td>
+            </tr>
+            <tr>
+              <td>Hexágono decorativo azul</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento identitário</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Para apresentar crescimento ao longo do tempo, posicione os dados em ordem cronológica da esquerda para a
+            direita</div>
+        </div>
+      </div>
+
+      <!-- PAGE s20 -->
+      <div id="page-s20" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slides 20 e 21 — Listas de Pontos</h1>
+          <p>Slide 20 organiza 3 pontos com listas numeradas. Slide 21 lista 5 itens com ícones à esquerda e a logo
+            Bonin grande à esquerda.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide20.png" alt=""></div>
+        <div class="slide-placeholder"><img src="img/slide21.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Títulos dos pontos (Ponto 1, 2, 3)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua pelo nome real de cada ponto</td>
+            </tr>
+            <tr>
+              <td>Itens de cada lista</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua o Lorem Ipsum pelo conteúdo real</td>
+            </tr>
+            <tr>
+              <td>Número de itens por lista</td>
+              <td><span class="pill care">⚠ Cuidado</span></td>
+              <td>Mantenha entre 3 e 4 itens por coluna</td>
+            </tr>
+            <tr>
+              <td>Textos dos itens do slide 21</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua "Texto" pelo conteúdo real</td>
+            </tr>
+            <tr>
+              <td>Layout de 3 colunas do slide 20</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não adicione ou remova colunas</td>
+            </tr>
+            <tr>
+              <td>Ícones dos botões</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Os ícones de pausa e lápis são decorativos</td>
+            </tr>
+            <tr>
+              <td>Logo grande do slide 21</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento visual fixo</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout warning">
+          <div>Prefira frases curtas e objetivas. O slide perde impacto com textos longos</div>
+        </div>
+      </div>
+
+      <!-- PAGE s22 -->
+      <div id="page-s22" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 22 — Diagrama de Venn (3 Círculos)</h1>
+          <p>Três círculos sobrepostos, cada um com um label central.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide22.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Labels de cada círculo (Item)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Coloque os nomes dos três conceitos</td>
+            </tr>
+            <tr>
+              <td>Tamanho e posição dos círculos</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere</td>
+            </tr>
+            <tr>
+              <td>Transparências de sobreposição</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere as opacidades</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Ideal para mostrar a intersecção entre 3 áreas, competências ou objetivos</div>
+        </div>
+      </div>
+
+      <!-- PAGE s23 -->
+      <div id="page-s23" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 23 — Calendário Mensal</h1>
+          <p>Calendário mensal editável com dias da semana e espaço para eventos.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide23.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Datas e eventos</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Coloque os eventos/entregas nas datas corretas</td>
+            </tr>
+            <tr>
+              <td>Número de cada dia</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Ajuste para o mês correto</td>
+            </tr>
+            <tr>
+              <td>Layout da grade do calendário</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere a estrutura da tabela</td>
+            </tr>
+            <tr>
+              <td>Cores do cabeçalho (azul)</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Identidade visual fixa</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Use este slide para apresentar cronogramas de projeto ou agenda do mês</div>
+        </div>
+      </div>
+
+      <!-- PAGE s24 -->
+      <div id="page-s24" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 24 — Título Minimalista (Tema Claro)</h1>
+          <p>Slide simples com apenas o título em fundo branco. Versão clara para separadores internos.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide24.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Texto do título</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua "Títulos" pelo nome da sua seção</td>
+            </tr>
+            <tr>
+              <td>Fundo gradiente suave</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere</td>
+            </tr>
+            <tr>
+              <td>Logo no rodapé</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Fixo</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Use este slide para fazer pausas elegantes entre seções de apresentações mais longas</div>
+        </div>
+      </div>
+
+      <!-- PAGE s25 -->
+      <div id="page-s25" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slides 25 e 26 — Barras Verticais de Porcentagem</h1>
+          <p>Gráfico de barras verticais com porcentagens. Versão escura (slide 25) e versão clara (slide 26).</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide25.png" alt=""></div>
+        <div class="slide-placeholder"><img src="img/slide26.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Valores percentuais (54%, 60%...)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Clique em cada texto para editar</td>
+            </tr>
+            <tr>
+              <td>Altura das barras preenchidas</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Ajuste proporcionalmente ao percentual real</td>
+            </tr>
+            <tr>
+              <td>Título</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Adicione o título do gráfico</td>
+            </tr>
+            <tr>
+              <td>Estilo das barras (bordas arredondadas)</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere</td>
+            </tr>
+            <tr>
+              <td>Número de barras</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Mantenha as 6 barras</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout warning">
+          <div>Atualize sempre o texto E a altura da barra — eles são independentes e precisam ser ajustados manualmente
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE s27 -->
+      <div id="page-s27" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slides 27 e 28 — Cards de Métricas</h1>
+          <p>Dois cards com número grande, variação e texto descritivo ao lado. Versão escura (slide 27) e clara (slide
+            28).</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide27.png" alt=""></div>
+        <div class="slide-placeholder"><img src="img/slide28.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Título do card</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Ex: "Seguidores", "Projetos", "Leads"</td>
+            </tr>
+            <tr>
+              <td>Número principal (999)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua pelo dado real</td>
+            </tr>
+            <tr>
+              <td>Variação (+134 do mês anterior)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Coloque a comparação real</td>
+            </tr>
+            <tr>
+              <td>Texto descritivo lateral</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Contextualização adicional</td>
+            </tr>
+            <tr>
+              <td>Cores dos dois cards</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Mantenha azul claro no topo e azul escuro embaixo</td>
+            </tr>
+            <tr>
+              <td>Ícone decorativo de barras</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento visual fixo</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Use para apresentar 2 métricas principais lado a lado com explicação contextual</div>
+        </div>
+      </div>
+
+      <!-- PAGE s29 -->
+      <div id="page-s29" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 29 — Círculos Aninhados (Funil)</h1>
+          <p>Diagrama de círculos concêntricos com números decrescentes — ideal para funis ou hierarquias numéricas.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide29.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Valores de cada anel (00, 000, 0000)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Coloque os números reais</td>
+            </tr>
+            <tr>
+              <td>Número em destaque (5.892)</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>O total ou valor principal</td>
+            </tr>
+            <tr>
+              <td>Título</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Nome do funil ou métrica</td>
+            </tr>
+            <tr>
+              <td>Texto de análise lateral</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua o Lorem Ipsum pela análise</td>
+            </tr>
+            <tr>
+              <td>Círculos e posicionamento</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere tamanho ou posição</td>
+            </tr>
+            <tr>
+              <td>Card branco de destaque</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não remova</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Use para mostrar funis de vendas, resultados acumulados ou hierarquias de volume</div>
+        </div>
+      </div>
+
+      <!-- PAGE s30 -->
+      <div id="page-s30" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 30 — Gráfico de Pizza (Donut)</h1>
+          <p>Gráfico em donut com 4 fatias e textos complementares dos dois lados.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide30.png" alt=""></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Proporções das fatias</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Clique no gráfico para editar os dados</td>
+            </tr>
+            <tr>
+              <td>Percentuais exibidos nas fatias</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Devem refletir os dados do gráfico</td>
+            </tr>
+            <tr>
+              <td>Textos laterais</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua pelas legendas reais</td>
+            </tr>
+            <tr>
+              <td>Título do gráfico</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Nomeie o gráfico</td>
+            </tr>
+            <tr>
+              <td>Texto complementar inferior</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Use para conclusão ou observação</td>
+            </tr>
+            <tr>
+              <td>Paleta de azuis do gráfico</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Mantenha o padrão de cores</td>
+            </tr>
+            <tr>
+              <td>Fundo gradiente branco/azul claro</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Ideal para mostrar distribuições percentuais (ex: orçamento por área, público por segmento)</div>
+        </div>
+      </div>
+
+      <!-- PAGE s31 -->
+      <div id="page-s31" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slide 31 — Encerramento (Excelência Certificada)</h1>
+          <p>Slide final com foto de fundo, título de encerramento, logos de certificação e selos.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide31.png" alt="Slide 31 — Encerramento"></div>
+        <h2 class="section-header">O que pode e não pode editar</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Foto de fundo</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Não altere a foto de fundo</td>
+            </tr>
+            <tr>
+              <td>Texto do título</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Pode ajustar para o contexto da apresentação</td>
+            </tr>
+            <tr>
+              <td>Logos de certificação (ISO 9001, 45001, 14001, CDHU)</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Selos oficiais — não remova nem altere</td>
+            </tr>
+            <tr>
+              <td>Logo Great Place to Work</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Certificação ativa — não remova</td>
+            </tr>
+            <tr>
+              <td>Logo Bonin</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Fixo</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout warning">
+          <div>Use este slide sempre como o último da apresentação</div>
+        </div>
+        <div class="callout danger">
+          <div>Os selos de certificação são obrigatórios — não os remova em hipótese alguma</div>
+        </div>
+      </div>
+
+      <!-- PAGE icons -->
+      <div id="page-icons" class="page mx-auto">
+        <div class="page-hero">
+
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Slides 9 e 10 — Banco de Ícones</h1>
+          <p>Biblioteca de ícones disponíveis para usar no template. Slide 9 tem ícones de pessoas, documentos,
+            tecnologia e negócios. Slide 10 tem ícones de engenharia, transporte, construção e processos.</p>
+        </div>
+        <div class="slide-placeholder"><img src="img/slide9.png" alt="Slide 9 — Banco de Ícones"></div>
+        <div class="slide-placeholder"><img src="img/slide10.png" alt="Slide 10 — Banco de Ícones"></div>
+        <h2 class="section-header">Como usar os ícones</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Ação</th>
+              <th>Regra</th>
+              <th>Orientação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Copiar qualquer ícone</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Selecione, copie (Ctrl+C) e cole onde precisar</td>
+            </tr>
+            <tr>
+              <td>Usar os slides 9 e 10 na apresentação</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Estes slides são apenas referência — não os inclua na apresentação final</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="callout tip">
+          <div>Selecione um ícone, copie e cole no slide desejado (especialmente o slide 8)</div>
+        </div>
+        <div class="callout info">
+          <div>Mantenha consistência visual: prefira ícones do mesmo estilo (outline ou filled) em um mesmo slide</div>
+        </div>
+        <div class="callout tip">
+          <div>Para ajustar o tamanho, segure Shift para manter a proporção</div>
+        </div>
+      </div>
+
+      <!-- PAGE rules -->
+      <div id="page-rules" class="page mx-auto">
+        <div class="page-hero">
+          <h1 class="text-3xl md:text-6xl font-black tracking-tight mb-4">Regras Gerais de Uso do Template</h1>
+          <p>Resumo completo do que pode e não pode ser editado em qualquer slide do template Bonin 2026.</p>
+        </div>
+
+        <div class="callout danger">
+
+          <div>
+            <div class="callout-title">Nunca faça isso</div>
+            Não remova os selos de certificação (ISO, CDHU, Great Place to Work), não altere a logo Bonin, não mude as
+            fontes tipográficas e não apague as camadas de degradê sobre as fotos.
+          </div>
+        </div>
+
+        <h2 class="section-header">Resumo global de permissões</h2>
+        <table class="rule-table">
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Regra</th>
+              <th>Comentário</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Textos de título e conteúdo</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Substitua sempre pelo conteúdo real</td>
+            </tr>
+            <tr>
+              <td>Fotos de fundo</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Apague a original, insira a nova, envie para trás (Send to Back)</td>
+            </tr>
+            <tr>
+              <td>Ícones dos hexágonos</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Use os ícones dos slides 9 e 10</td>
+            </tr>
+            <tr>
+              <td>Dados de gráficos e métricas</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Edite os números e ajuste as formas proporcionalmente</td>
+            </tr>
+            <tr>
+              <td>Labels de timelines e processos</td>
+              <td><span class="pill can">✓ Pode</span></td>
+              <td>Adapte ao seu processo ou cronograma</td>
+            </tr>
+            <tr>
+              <td>Logo Bonin</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Identidade visual obrigatória</td>
+            </tr>
+            <tr>
+              <td>Fontes tipográficas</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Mantenha a fonte do template</td>
+            </tr>
+            <tr>
+              <td>Camadas de degradê</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Garantem legibilidade sobre as fotos</td>
+            </tr>
+            <tr>
+              <td>Selos ISO (9001, 45001, 14001)</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Certificações obrigatórias no slide final</td>
+            </tr>
+            <tr>
+              <td>Selo Great Place to Work</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Certificação ativa — obrigatória</td>
+            </tr>
+            <tr>
+              <td>Símbolo "B" decorativo</td>
+              <td><span class="pill no">✗ Não altere</span></td>
+              <td>Elemento identitário fixo</td>
+            </tr>
+            <tr>
+              <td>Cores principais da paleta</td>
+              <td><span class="pill care">⚠ Cuidado</span></td>
+              <td>Ajustes menores são aceitáveis, mas mantenha o padrão azul/escuro</td>
+            </tr>
+            <tr>
+              <td>Número de colunas/blocos</td>
+              <td><span class="pill care">⚠ Cuidado</span></td>
+              <td>Duplicar slides é ok; adicionar colunas extras pode quebrar o layout</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="section-header">Boas práticas de conteúdo</h2>
+        <ul class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <div><strong>Menos texto, mais slides</strong>
+              <p>Se o conteúdo não cabe no slide de forma legível, duplique o slide e distribua o conteúdo. Nunca reduza
+                o tamanho da fonte abaixo de 12pt.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <div><strong>Use tópicos, não parágrafos</strong>
+              <p>Apresentações são para guiar a conversa, não para ser lidas. Use frases curtas e objetivas.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <div><strong>Fotos de alta qualidade</strong>
+              <p>Use imagens com no mínimo 1920×1080px. Fotos pixeladas prejudicam a imagem profissional.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <div><strong>Consistência de tema</strong>
+              <p>Não misture slides do tema claro com escuro aleatoriamente. Defina um padrão e siga (ex: capa e seções
+                no escuro, conteúdo no claro).</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num">5</span>
+            <div><strong>Revise antes de enviar</strong>
+              <p>Confira que todos os textos de Lorem Ipsum foram substituídos e que os dados dos gráficos estão
+                atualizados.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+
+    </main>
+  </div>
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-60 z-40 hidden" onclick="toggleSidebar()"></div>
+
+  <script>
+    const breadcrumbs = {
+      'intro': 'Visão Geral',
+      's1': 'Slide 1 — Capa Escura',
+      's2': 'Slide 2 — Capa Institucional',
+      's4': 'Slide 4 — Capa com Foto',
+      's24': 'Slide 24 — Título Minimalista',
+      's31': 'Slide 31 — Encerramento',
+      's3': 'Slides 3/5 — Título',
+      's6': 'Slides 6/7 — Conteúdo',
+      's8': 'Slide 8 — Hexágonos',
+      's11': 'Slide 11 — Destaque',
+      's12': 'Slide 12 — Visão Macro',
+      's20': 'Slides 20/21 — Listas',
+      's22': 'Slide 22 — Venn',
+      's13': 'Slides 13/14 — Timeline',
+      's15': 'Slides 15/16 — Onda',
+      's17': 'Slides 17/18 — Radar',
+      's19': 'Slide 19 — Barras',
+      's23': 'Slide 23 — Calendário',
+      's25': 'Slides 25/26 — Porcentagem',
+      's27': 'Slides 27/28 — Métricas',
+      's29': 'Slide 29 — Funil',
+      's30': 'Slide 30 — Pizza',
+      'icons': 'Banco de Ícones',
+      'rules': 'Regras Gerais',
+    };
+
+    function show(key) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('[id^="nav-"]').forEach(n => n.classList.remove('active'));
+      const page = document.getElementById('page-' + key);
+      if (page) page.classList.add('active');
+      const nav = document.getElementById('nav-' + key);
+      if (nav) nav.classList.add('active');
+      document.getElementById('breadcrumb-text').textContent = breadcrumbs[key] || key;
+      window.scrollTo(0, 0);
+      document.getElementById('sidebar').classList.remove('sidebar-open');
+      return false;
+    }
+
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('sidebar-open');
+      document.getElementById('sidebar-backdrop').classList.toggle('hidden');
+    }
+  </script>
+</body>
+
+</html>

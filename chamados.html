@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Bonin - Tutorial: Como Abrir um Chamado</title>
+    <link rel="icon" type="image/x-icon" href="img/favico.png">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&family=Noto+Sans:wght@100..900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2DA6FF",
+                        "terracotta": "#2DA6FF",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#1a1a1a",
+                        "charcoal": "#121212",
+                        "surface": "#242424",
+                        "border-muted": "#333333"
+                    },
+                    fontFamily: {
+                        "display": ["Source Sans Pro", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+            background: radial-gradient(ellipse 125% 100% at 95% 75%, rgb(100 140 200 / .3) 0%, transparent 55%), radial-gradient(ellipse 90% 75% at 100% 100%, rgb(26 58 110 / .85) 0%, transparent 70%), linear-gradient(160deg, #04050c 0%, #060b17 100%);
+            color: white;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        @media (max-width: 767px) {
+            #sidebar {
+                display: none;
+            }
+            #sidebar.sidebar-open {
+                display: flex;
+            }
+        }
+
+        /* Tooltip container */
+        .tooltip-btn {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .tooltip-btn .tooltip-box {
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            position: absolute;
+            left: calc(100% + 12px);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 260px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 13px;
+            line-height: 1.55;
+            color: #cbd5e1;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            white-space: normal;
+        }
+
+        .tooltip-btn .tooltip-box::before {
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 6px solid transparent;
+            border-right-color: #334155;
+        }
+
+        .tooltip-btn:hover .tooltip-box,
+        .tooltip-btn:focus-within .tooltip-box {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Mobile: tooltip goes below */
+        @media (max-width: 640px) {
+            .tooltip-btn .tooltip-box {
+                left: 50%;
+                top: calc(100% + 10px);
+                transform: translateX(-50%);
+                width: 200px;
+            }
+
+            .tooltip-btn .tooltip-box::before {
+                right: auto;
+                left: 50%;
+                top: auto;
+                bottom: 100%;
+                transform: translateX(-50%);
+                border-right-color: transparent;
+                border-bottom-color: #334155;
+            }
+        }
+
+        /* Info button icon */
+        .info-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: #2DA6FF;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            font-style: italic;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(45, 166, 255, 0.5);
+            transition: background-color 0.15s, transform 0.15s;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+
+        .info-icon:hover {
+            background-color: #1e8fd5;
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+
+<body class="text-white antialiased">
+    <div class="flex h-screen w-full overflow-hidden">
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 md:static w-72 flex-shrink-0 flex flex-col border-r border-border-muted bg-charcoal p-6 gap-8">
+            <div class="flex items-center gap-3">
+                <div class="flex flex-col">
+                    <img src="img/Logo.webp" width="150" height="auto" alt="Bonin Logo">
+                </div>
+            </div>
+            <nav class="flex flex-col gap-1">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="manual.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">menu_book</span>
+                    <span class="text-sm font-medium">Manual da Marca e <br> Paleta de Cores</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="logo.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">text_fields</span>
+                    <span class="text-sm font-medium">Logos e Tipografia</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="paleta.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">note_alt</span>
+                    <span class="text-sm font-medium">Papéis Timbrados e Capas de Linkedin & Meet Teams</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="assinaturas.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">email</span>
+                    <span class="text-sm font-medium">Assinaturas de E-mail</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="ppt/documentacao-ppt.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">developer_guide</span>
+                    <span class="text-sm font-medium">Documentação PPT</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface text-white" href="chamados.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">confirmation_number</span>
+                    <span class="text-sm font-medium">Tutorial: Abrir Chamado</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 flex flex-col overflow-y-auto">
+
+            <!-- Mobile Top Bar -->
+            <div class="md:hidden flex items-center justify-between px-4 py-3 bg-charcoal border-b border-border-muted sticky top-0 z-30">
+                <img src="img/Logo.webp" width="100" height="auto" alt="Bonin Logo">
+                <button onclick="toggleSidebar()" class="text-white p-1">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+
+            <!-- Page Content -->
+            <div class="flex-1 px-4 md:px-10 py-6 md:py-12 max-w-6xl mx-auto w-full">
+
+                <!-- Page Header -->
+                <div class="mb-10">
+                    <div class="inline-flex items-center px-3 py-1 rounded bg-terracotta text-white text-[10px] font-bold uppercase tracking-widest mb-4">
+                        TUTORIAL
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-black tracking-tight mb-4">Como Abrir um Chamado</h1>
+                    <p class="text-base md:text-xl text-gray-400 max-w-2xl leading-relaxed">
+                        Guia passo a passo para o preenchimento correto do formulário de chamados internos. Passe o mouse sobre os ícones <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary text-white text-xs font-bold font-serif italic">i</span> para ver a descrição de cada campo.
+                    </p>
+                </div>
+
+                <!-- Steps -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+                    <div class="bg-surface border border-border-muted rounded-xl p-5 flex gap-4 items-start">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-terracotta text-white font-bold text-sm flex items-center justify-center">1</span>
+                        <div>
+                            <p class="font-bold text-white text-sm mb-1">Acesse o sistema</p>
+                            <p class="text-gray-400 text-sm leading-relaxed">Entre na plataforma de chamados com seu login corporativo.</p>
+                        </div>
+                    </div>
+                    <div class="bg-surface border border-border-muted rounded-xl p-5 flex gap-4 items-start">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-terracotta text-white font-bold text-sm flex items-center justify-center">2</span>
+                        <div>
+                            <p class="font-bold text-white text-sm mb-1">Preencha o formulário</p>
+                            <p class="text-gray-400 text-sm leading-relaxed">Preencha todos os campos obrigatórios marcados com <span class="text-primary font-bold">*</span> com atenção.</p>
+                        </div>
+                    </div>
+                    <div class="bg-surface border border-border-muted rounded-xl p-5 flex gap-4 items-start">
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-terracotta text-white font-bold text-sm flex items-center justify-center">3</span>
+                        <div>
+                            <p class="font-bold text-white text-sm mb-1">Faça a requisição</p>
+                            <p class="text-gray-400 text-sm leading-relaxed">Clique em <span class="text-white font-semibold">FAZER REQUISIÇÃO</span> para registrar seu chamado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Annotated Form Section -->
+                <section class="flex flex-col gap-6 border-t border-border-muted pt-8">
+                    <div>
+                        <h2 class="text-white text-2xl font-bold uppercase tracking-wider mb-2">Formulário Anotado</h2>
+                        <p class="text-gray-400 text-sm">Passe o mouse sobre os ícones azuis para entender cada campo do formulário.</p>
+                    </div>
+
+                    <!-- Image + Tooltip Overlay Container -->
+                    <div class="relative inline-block w-full rounded-xl overflow-visible border border-border-muted shadow-2xl">
+                        <img
+                            src="img/formulario-chamado.png"
+                            alt="Formulário de abertura de chamado"
+                            class="w-full h-auto block rounded-xl"
+                            id="form-image"
+                        />
+
+                        <!--
+                            Tooltip buttons — positioned with top/left as % of the image dimensions.
+                            Coordinates based on the form screenshot provided.
+                            Adjust top/left percentages if the image layout differs.
+                        -->
+
+                        <!-- Nome do Solicitante — label row ~18% from top, ~18% from left -->
+                        <div class="tooltip-btn" style="top: 18%; left: 18%;">
+                            <button class="info-icon" aria-label="Informação: Nome do Solicitante">i</button>
+                            <div class="tooltip-box" role="tooltip">
+                                <strong class="block text-white mb-1">Nome do Solicitante</strong>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Informe seu nome completo conforme cadastrado no sistema.
+                            </div>
+                        </div>
+
+                        <!-- E-mail — ~18% top, ~48% left -->
+                        <div class="tooltip-btn" style="top: 18%; left: 48%;">
+                            <button class="info-icon" aria-label="Informação: E-mail">i</button>
+                            <div class="tooltip-box" role="tooltip">
+                                <strong class="block text-white mb-1">E-mail</strong>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Utilize seu e-mail corporativo para que possamos retornar o contato corretamente.
+                            </div>
+                        </div>
+
+                        <!-- Empresa — ~18% top, ~75% left -->
+                        <div class="tooltip-btn" style="top: 18%; left: 75%;">
+                            <button class="info-icon" aria-label="Informação: Empresa">i</button>
+                            <div class="tooltip-box" role="tooltip">
+                                <strong class="block text-white mb-1">Empresa</strong>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Selecione a empresa à qual você está vinculado no momento da abertura do chamado.
+                            </div>
+                        </div>
+
+                        <!-- Observação — ~32% top, ~92% left -->
+                        <div class="tooltip-btn" style="top: 32%; left: 92%;">
+                            <button class="info-icon" aria-label="Informação: Observação">i</button>
+                            <div class="tooltip-box" role="tooltip">
+                                <strong class="block text-white mb-1">Observação</strong>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Descreva detalhadamente sua solicitação para agilizar o atendimento.
+                            </div>
+                        </div>
+
+                        <!-- Anexos — ~57% top, ~92% left -->
+                        <div class="tooltip-btn" style="top: 57%; left: 92%;">
+                            <button class="info-icon" aria-label="Informação: Anexos">i</button>
+                            <div class="tooltip-box" role="tooltip">
+                                <strong class="block text-white mb-1">Anexos</strong>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Adicione arquivos relevantes que ajudem a equipe a entender melhor a sua solicitação (prints, documentos, planilhas).
+                            </div>
+                        </div>
+
+                        <!-- Grupo Direcionado — ~70% top, ~40% left -->
+                        <div class="tooltip-btn" style="top: 70%; left: 40%;">
+                            <button class="info-icon" aria-label="Informação: Grupo Direcionado">i</button>
+                            <div class="tooltip-box" role="tooltip">
+                                <strong class="block text-white mb-1">Grupo Direcionado</strong>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Selecione o departamento ou grupo responsável por atender a sua demanda.
+                            </div>
+                        </div>
+
+                        <!-- Ponto Focal de Ajuda — ~83% top, ~20% left -->
+                        <div class="tooltip-btn" style="top: 83%; left: 20%;">
+                            <button class="info-icon" aria-label="Informação: Ponto Focal de Ajuda">i</button>
+                            <div class="tooltip-box" role="tooltip">
+                                <strong class="block text-white mb-1">Ponto Focal de Ajuda</strong>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Indique uma pessoa de referência que possa auxiliar no esclarecimento de dúvidas sobre o chamado.
+                            </div>
+                        </div>
+
+                        <!-- Prazo Limite do Envio — ~83% top, ~65% left -->
+                        <div class="tooltip-btn" style="top: 83%; left: 65%;">
+                            <button class="info-icon" aria-label="Informação: Prazo Limite do Envio">i</button>
+                            <div class="tooltip-box" role="tooltip">
+                                <strong class="block text-white mb-1">Prazo Limite do Envio</strong>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Informe a data limite para que o chamado seja concluído, considerando sua necessidade e urgência.
+                            </div>
+                        </div>
+
+                    </div><!-- end relative container -->
+
+                </section>
+
+                <!-- Footer spacing -->
+                <div class="h-16"></div>
+
+            </div><!-- end page content -->
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('sidebar-open');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function (e) {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = e.target.closest('button[onclick="toggleSidebar()"]');
+            if (!menuBtn && !sidebar.contains(e.target) && sidebar.classList.contains('sidebar-open')) {
+                sidebar.classList.remove('sidebar-open');
+            }
+        });
+    </script>
+</body>
+
+</html>

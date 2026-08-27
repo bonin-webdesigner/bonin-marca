@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Bonin - Manual da Marca</title>
+    <link rel="icon" type="image/x-icon" href="img/favico.png">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;family=Noto+Sans:wght@100..900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2DA6FF",
+                        "terracotta": "#2DA6FF",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#1a1a1a",
+                        "charcoal": "#121212",
+                        "surface": "#242424",
+                        "border-muted": "#333333"
+                    },
+                    fontFamily: {
+                        "display": ["Source Sans Pro", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+            background: radial-gradient(ellipse 125% 100% at 95% 75%, rgb(100 140 200 / .3) 0%, transparent 55%), radial-gradient(ellipse 90% 75% at 100% 100%, rgb(26 58 110 / .85) 0%, transparent 70%), linear-gradient(160deg, #04050c 0%, #060b17 100%);
+            color: white;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .asset-card {
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .asset-card:hover {
+            border-color: #2DA6FF;
+        }
+
+        @media (max-width: 767px) {
+            #sidebar {
+                display: none;
+            }
+            #sidebar.sidebar-open {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-white antialiased">
+    <div class="flex h-screen w-full overflow-hidden">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 md:static w-72 flex-shrink-0 flex flex-col border-r border-border-muted bg-charcoal p-6 gap-8">
+            <div class="flex items-center gap-3">
+                <div class="flex flex-col">
+                    <img src="img/Logo.webp" width="150" height="auto" alt="Bonin Logo">
+                </div>
+            </div>
+            <nav class="flex flex-col gap-1">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="manual.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">menu_book</span>
+                    <span class="text-sm font-medium">Manual da Marca e <br>  Paleta de Cores</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="logo.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">text_fields</span>
+                    <span class="text-sm font-medium">Logos e Tipografia</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface text-white" href="paleta.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">note_alt</span>
+                    <span class="text-sm font-medium"> Papéis Timbrados e Capas de Linkedin & Meet Teams</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="assinaturas.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">email</span>
+                    <span class="text-sm font-medium">Assinaturas de E-mail</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="ppt/documentacao-ppt.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">developer_guide</span>
+                    <span class="text-sm font-medium">Documentação PPT</span>
+                </a>
+            </nav>
+
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto relative">
+            <!-- Mobile Top Bar -->
+            <div class="md:hidden flex items-center justify-between px-4 py-3 bg-charcoal border-b border-border-muted sticky top-0 z-30">
+                <img src="img/Logo.webp" width="100" height="auto" alt="Bonin Logo">
+                <button onclick="toggleSidebar()" class="text-white p-1">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+            <!-- Header -->
+            <header class="px-4 md:px-10 py-6 md:py-12 border-border-muted bg-charcoal z-10 backdrop-blur-md bg-opacity-90">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-white text-2xl md:text-4xl font-bold leading-tight tracking-tight">Paleta de Cores &amp; Papéis
+                        Timbrados</h2>
+                    <p class="text-gray-400 text-base font-normal leading-normal mt-2 max-w-2xl">Repositório oficial de
+                        papéis timbrados, apresentações e papéis de parede digitais. Garanta que todas as comunicações
+                        externas estejam em conformidade com esses formatos aprovados.</p>
+                </div>
+            </header>
+            <div class="p-4 md:p-10 max-w-7xl mx-auto space-y-16 pb-24">
+                <!-- Letterheads Section -->
+                <section>
+                    <div class="flex items-center justify-between border-b border-border-muted pb-4 mb-6">
+                        <h3 class="text-white text-2xl font-bold uppercase tracking-wider">Papéis Timbrados</h3>
+
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Card 1 -->
+                        <div
+                            class="asset-card flex flex-col bg-surface border border-border-muted rounded-lg overflow-hidden group cursor-pointer">
+                            <a href="img/BRAND KIT_Publico/papel_timbrado.webp" data-fancybox="gallery"
+                                data-caption="Papel Timbrado Digital">
+                                <div
+                                    class="aspect-[4/3] bg-background-dark p-6 flex items-center justify-center relative">
+                                    <img src="img/BRAND KIT_Publico/papel_timbrado.webp" alt="Papel Timbrado da Bonin">
+                                    <div
+                                        class="absolute inset-0 bg-charcoal bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center transition-all duration-200">
+                                        <span
+                                            class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 text-4xl">zoom_in</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="p-4 flex flex-col flex-grow justify-between bg-surface">
+                                <div>
+                                    <h4 class="text-white font-bold text-lg mb-1 truncate">Papel Timbrado</h4>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span
+                                        class="bg-border-muted text-white text-xs px-2 py-1 rounded uppercase tracking-wider font-medium">DOCX</span>
+                                    <a href="img/BRAND KIT_Publico/06. Papel Timbrado.docx" download><button
+                                            class="text-primary hover:text-white transition-colors flex items-center gap-1 text-sm font-bold uppercase tracking-wider">
+                                            <span class="material-symbols-outlined text-lg">download</span> Baixar
+                                        </button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="asset-card flex flex-col bg-surface border border-border-muted rounded-lg overflow-hidden group cursor-pointer">
+                            <a href="img/BRAND KIT_Publico/papel_timbrado_selo.webp" data-fancybox="gallery"
+                                data-caption="Papel Timbrado Digital com Selos">
+                                <div
+                                    class="aspect-[4/3] bg-background-dark p-6 flex items-center justify-center relative">
+                                    <img src="img/BRAND KIT_Publico/papel_timbrado_selo.webp"
+                                        alt="Papel Timbrado Digital com Selos">
+                                    <div
+                                        class="absolute inset-0 bg-charcoal bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center transition-all duration-200">
+                                        <span
+                                            class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 text-4xl">zoom_in</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="p-4 flex flex-col flex-grow justify-between bg-surface">
+                                <div>
+                                    <h4 class="text-white font-bold text-lg mb-1 truncate">Papel Timbrado Digital com
+                                        Selos</h4>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span
+                                        class="bg-border-muted text-white text-xs px-2 py-1 rounded uppercase tracking-wider font-medium">DOCX</span>
+                                    <a href="img/BRAND KIT_Publico/07. Papel Timbrado Selos.docx" download><button
+                                            class="text-primary hover:text-white transition-colors flex items-center gap-1 text-sm font-bold uppercase tracking-wider">
+                                            <span class="material-symbols-outlined text-lg">download</span> Baixar
+                                        </button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Presentations Section -->
+                <section>
+                    <div class="flex items-center justify-between border-b border-border-muted pb-4 mb-6">
+                        <h3 class="text-white text-2xl font-bold uppercase tracking-wider">Capas de LinkedIn e Meeting
+                            Teams</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Card 3 -->
+
+                        <div
+                            class="asset-card flex flex-col bg-surface border border-border-muted rounded-lg overflow-hidden group cursor-pointer">
+                            <a href="img/BRAND KIT_Publico/08. Capa Linkedin colaborador.png" data-fancybox="gallery"
+                                data-caption="Logo Principal Azul">
+                                <div class="aspect-[16/9] bg-[#222] p-4 flex items-center justify-center relative">
+                                    <div class="w-full h-full bg-charcoal border border-border-muted flex flex-col">
+                                        <div class="flex-1 flex items-center p-4 relative overflow-hidden">
+                                            <img src="img/BRAND KIT_Publico/08. Capa Linkedin colaborador.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 bg-charcoal bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center transition-all duration-200">
+                                        <span
+                                            class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 text-4xl">zoom_in</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="p-4 flex flex-col flex-grow justify-between bg-surface">
+                                <div>
+                                    <h4 class="text-white font-bold text-lg mb-1 truncate">Capa LinkedIn Colaborador
+                                    </h4>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span
+                                        class="bg-border-muted text-white text-xs px-2 py-1 rounded uppercase tracking-wider font-medium">PNG</span>
+                                    <a href="img/BRAND KIT_Publico/08. Capa Linkedin colaborador.png" download
+                                        class="text-primary hover:text-white transition-colors flex items-center gap-1 text-sm font-bold uppercase tracking-wider">
+                                        <span class="material-symbols-outlined text-lg">download</span> Baixar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div
+                            class="asset-card flex flex-col bg-surface border border-border-muted rounded-lg overflow-hidden group cursor-pointer">
+                            <a href="img/BRAND KIT_Publico/05. BACK MEETING_Teams_Meeat.png" data-fancybox="gallery"
+                                data-caption="Logo Principal Azul">
+                                <div class="aspect-[16/9] bg-[#222] p-4 flex items-center justify-center relative">
+                                    <div class="w-full h-full bg-charcoal border border-border-muted flex flex-col">
+                                        <div class="flex-1 flex items-center p-4 relative overflow-hidden">
+                                            <img src="img/BRAND KIT_Publico/05. BACK MEETING_Teams_Meeat.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 bg-charcoal bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center transition-all duration-200">
+                                        <span
+                                            class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 text-4xl">zoom_in</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="p-4 flex flex-col flex-grow justify-between bg-surface">
+                                <div>
+                                    <h4 class="text-white font-bold text-lg mb-1 truncate">Fundo de Tela para Meeting Teams</h4>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span
+                                        class="bg-border-muted text-white text-xs px-2 py-1 rounded uppercase tracking-wider font-medium">PNG</span>
+                                    <a href="img/BRAND KIT_Publico/05. BACK MEETING_Teams_Meeat.png" download
+                                        class="text-primary hover:text-white transition-colors flex items-center gap-1 text-sm font-bold uppercase tracking-wider">
+                                        <span class="material-symbols-outlined text-lg">download</span> Baixar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                <!-- Wallpapers Section -->
+                <section>
+                    <div class="flex items-center justify-between border-b border-border-muted pb-4 mb-6">
+                        <h3 class="text-white text-2xl font-bold uppercase tracking-wider">Papel de Parede Digital</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Card 4 -->
+                        
+                        <div class="asset-card flex flex-col bg-surface border border-border-muted rounded-lg overflow-hidden group cursor-pointer">
+                            <a href="img/BRAND KIT_Publico/09. Wallpaper GPTW 2025.png" data-fancybox="gallery" data-caption="Wallpaper GPTW 2025">
+                                <div class="aspect-[16/9] relative bg-cover bg-center"
+                                    style="background-image: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);">
+                            
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <img src="img/BRAND KIT_Publico/09. Wallpaper GPTW 2025.png" alt="Papel de parede da Bonin">
+                                    </div>
+                            
+                                    <div
+                                        class="absolute inset-0 bg-charcoal bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center transition-all duration-200">
+                                        <span class="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 text-4xl">zoom_in</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="p-4 flex flex-col flex-grow justify-between bg-surface">
+                                <div>
+                                    <h4 class="text-white font-bold text-lg mb-1 truncate">Wallpaper GPTW 2025</h4>
+                                    <p class="text-gray-400 text-xs uppercase tracking-widest mb-4">1920x1080 • Desktop
+                                    </p>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span
+                                        class="bg-border-muted text-white text-xs px-2 py-1 rounded uppercase tracking-wider font-medium">PNG</span>
+                                    <a href="img/BRAND KIT_Publico/09. Wallpaper GPTW 2025.png" download
+                                        class="text-primary hover:text-white transition-colors flex items-center gap-1 text-sm font-bold uppercase tracking-wider"
+                                        onclick="event.stopPropagation();">
+                                        <span class="material-symbols-outlined text-lg">download</span> Baixar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </section>
+            </div>
+
+            <!-- Footer -->
+            <footer class="mt-auto py-6 px-4 md:py-10 md:px-10 border-t border-border-muted flex flex-col md:flex-row items-start md:items-center gap-3 justify-between text-gray-500">
+                <p class="text-xs">Bonin Engenharia e Consultoria © 2026 Todos os direitos reservados</p>
+                <div class="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
+                    <a class="hover:text-white" href="https://www.bonin.eng.br/politica-privacidade/">Política de
+                        Privacidade</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+    
+    <!-- Mobile Sidebar Backdrop -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-60 z-40 hidden" onclick="toggleSidebar()"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {});
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('sidebar-open');
+            document.getElementById('sidebar-backdrop').classList.toggle('hidden');
+        }
+    </script>
+</body>
+
+</html>

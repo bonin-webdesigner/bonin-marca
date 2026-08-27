@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Bonin - Logo e Tipografia</title>
+    <link rel="icon" type="image/x-icon" href="img/favico.png">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;family=Noto+Sans:wght@100..900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2DA6FF",
+                        "terracotta": "#2DA6FF",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#1a1a1a",
+                        "charcoal": "#121212",
+                        "surface": "#242424",
+                        "border-muted": "#333333"
+                    },
+                    fontFamily: {
+                        "display": ["Source Sans Pro", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+            background: radial-gradient(ellipse 125% 100% at 95% 75%, rgb(100 140 200 / .3) 0%, transparent 55%), radial-gradient(ellipse 90% 75% at 100% 100%, rgb(26 58 110 / .85) 0%, transparent 70%), linear-gradient(160deg, #04050c 0%, #060b17 100%);
+            color: white;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        @font-face {
+            font-family: 'Nova Condensed';
+            src: url('img/BRAND KIT_Publico/Nova-Condensed/Nova Condensed S Si Condensed.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Nova Condensed';
+            src: url('img/BRAND KIT_Publico/Nova-Condensed/Nova Condensed S Si Bold Condensed.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Nova Condensed';
+            src: url('img/BRAND KIT_Publico/Nova-Condensed/Nova Light Condensed S Si Light Condensed.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .font-nova {
+            font-family: 'Nova Condensed', sans-serif;
+        }
+
+        @media (max-width: 767px) {
+            #sidebar {
+                display: none;
+            }
+            #sidebar.sidebar-open {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-white antialiased">
+    <div class="flex h-screen w-full overflow-hidden">
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 md:static w-72 flex-shrink-0 flex flex-col border-r border-border-muted bg-charcoal p-6 gap-8">
+            <div class="flex items-center gap-3">
+                <div class="flex flex-col">
+                    <img src="img/Logo.webp" width="150" height="auto" alt="Bonin Logo">
+                </div>
+            </div>
+            <nav class="flex flex-col gap-1">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="manual.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">menu_book</span>
+                    <span class="text-sm font-medium">Manual da Marca e <br>  Paleta de Cores</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface text-white" href="logo.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">text_fields</span>
+                    <span class="text-sm font-medium">Logos e Tipografia</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="paleta.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">note_alt</span>
+                    <span class="text-sm font-medium"> Papéis Timbrados e Capas de Linkedin & Meet Teams</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="assinaturas.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">email</span>
+                    <span class="text-sm font-medium">Assinaturas de E-mail</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="ppt/documentacao-ppt.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">developer_guide</span>
+                    <span class="text-sm font-medium">Documentação PPT</span>
+                </a>
+            </nav>
+
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-1 flex flex-col overflow-y-auto">
+            <!-- Mobile Top Bar -->
+            <div class="md:hidden flex items-center justify-between px-4 py-3 bg-charcoal border-b border-border-muted sticky top-0 z-30">
+                <img src="img/Logo.webp" width="100" height="auto" alt="Bonin Logo">
+                <button onclick="toggleSidebar()" class="text-white p-1">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+            <div class="flex-1 px-4 md:px-10 py-6 md:py-12 max-w-6xl mx-auto w-full flex flex-col gap-12 pb-20">
+                <!-- Page Header -->
+                <section class="flex flex-col gap-4">
+                    <h1 class="text-3xl md:text-6xl font-black tracking-tight">Logos &amp; Tipografia</h1>
+                    <p class="text-base md:text-xl text-gray-400 max-w-2xl leading-relaxed">Navegue, visualize e baixe as marcas de
+                        identidade visual oficiais. Garanta que as regras de contraste e espaço livre sejam seguidas em
+                        todas as aplicações.</p>
+                </section>
+                <!-- Primary Logos Section -->
+                <section class="flex flex-col gap-6 border-t border-border-muted pt-8">
+                    <h2 class="text-white text-2xl font-bold uppercase tracking-wider">Logotipo Principal</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Logo Card: Light Background -->
+                        <div class="flex flex-col gap-4 group">
+                            <a href="img/BRAND KIT_Publico/02. Logo_PRINCIPAL_Azul PNG.png" data-fancybox="gallery"
+                                data-caption="Logo Principal Azul">
+                                <div
+                                    class="relative bg-background-light border border-border-muted aspect-[4/3] flex items-center justify-center overflow-hidden transition-colors hover:border-primary cursor-pointer rounded-xl">
+                                    <div
+                                        class="absolute inset-0 bg-background-light/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
+                                        <span
+                                            class="text-charcoal font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+                                            <span class="material-symbols-outlined"
+                                                style="font-variation-settings: 'FILL' 0;">zoom_in</span>
+                                            Visualizar
+                                        </span>
+                                    </div>
+                                    <img src="img/BRAND KIT_Publico/02. Logo_PRINCIPAL_Azul PNG.png"
+                                        alt="Bonin Logo Claro" class="max-w-[60%] max-h-[40%] object-contain" />
+                                </div>
+                            </a>
+                            <div class="flex items-end justify-between">
+                                <div>
+                                    <h3 class="text-white text-lg font-bold">Logo Principal Azul</h3>
+                                    <p class="text-gray-400 text-sm mt-1">Para uso em fundos claros.</p>
+                                </div>
+                                <div class="flex gap-2">
+
+                                    <a href="img/BRAND KIT_Publico/02. Logo_PRINCIPAL_Azul PNG.png" download> <button
+                                            class="px-3 py-1 bg-surface border border-border-muted text-xs uppercase tracking-widest hover:border-primary hover:text-primary transition-colors rounded">PNG</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Logo Card: Dark Background -->
+                        <div class="flex flex-col gap-4 group">
+                            <a href="img/BRAND KIT_Publico/04. Logo_prata PNG.png" data-fancybox="gallery"
+                                data-caption="Logo Principal Prata">
+                                <div
+                                    class="relative bg-surface border border-border-muted aspect-[4/3] flex items-center justify-center overflow-hidden transition-colors hover:border-primary cursor-pointer rounded-xl">
+                                    <div
+                                        class="absolute inset-0 bg-background-dark/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
+                                        <span
+                                            class="text-white font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+                                            <span class="material-symbols-outlined"
+                                                style="font-variation-settings: 'FILL' 0;">zoom_in</span>
+                                            Visualizar
+                                        </span>
+                                    </div>
+                                    <img src="img/BRAND KIT_Publico/04. Logo_prata PNG.png" alt="Bonin Logo Escuro"
+                                        class="max-w-[60%] max-h-[40%] object-contain" />
+                                </div>
+                            </a>
+                            <div class="flex items-end justify-between">
+                                <div>
+                                    <h3 class="text-white text-lg font-bold">Logo Secundário Prata</h3>
+                                    <p class="text-gray-400 text-sm mt-1">Para uso em fundos escuros.</p>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="img/BRAND KIT_Publico/04. Logo_prata PNG.png" download> <button
+                                            class="px-3 py-1 bg-surface border border-border-muted text-xs uppercase tracking-widest hover:border-primary hover:text-primary transition-colors rounded">PNG</button></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logo Card: Dark Background -->
+                        <div class="flex flex-col gap-4 group">
+                            <a href="img/BRAND KIT_Publico/Logo-branco.webp" data-fancybox="gallery"
+                                data-caption="Logo Principal Branca Hexágono">
+                                <div
+                                    class="relative bg-surface border border-border-muted aspect-[4/3] flex items-center justify-center overflow-hidden transition-colors hover:border-primary cursor-pointer rounded-xl">
+                                    <div
+                                        class="absolute inset-0 bg-background-dark/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
+                                        <span
+                                            class="text-white font-bold uppercase tracking-widest text-sm flex items-center gap-2">
+                                            <span class="material-symbols-outlined"
+                                                style="font-variation-settings: 'FILL' 0;">zoom_in</span>
+                                            Visualizar
+                                        </span>
+                                    </div>
+                                    <img src="img/BRAND KIT_Publico/Logo-branco.webp" alt="Bonin Logo Branca"
+                                        class="max-w-[60%] max-h-[40%] object-contain" />
+                                </div>
+                            </a>
+                            <div class="flex items-end justify-between">
+                                <div>
+                                    <h3 class="text-white text-lg font-bold">Logo Principal Branca</h3>
+                                    <p class="text-gray-400 text-sm mt-1">Para uso em fundos escuros.</p>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="img/BRAND KIT_Publico/Logo-branco.webp" download> <button
+                                            class="px-3 py-1 bg-surface border border-border-muted text-xs uppercase tracking-widest hover:border-primary hover:text-primary transition-colors rounded">PNG</button></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+                
+                <!-- Typography Section -->
+                <section class="flex flex-col gap-6 border-t border-border-muted pt-8">
+                    <h2 class="text-white text-2xl font-bold uppercase tracking-wider">Tipografia</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                        <div class="p-8 bg-surface border border-border-muted rounded-xl flex flex-col gap-4">
+                            <div class="flex justify-between items-start border-b border-border-muted pb-4">
+                                <div>
+                                    <h3 class="text-white text-xl font-bold">Source Sans Pro</h3>
+                                    <p class="text-gray-400 text-sm mt-1">TIPOGRAFIA PRINCIPAL</p>
+                                </div>
+                                <a href="img/BRAND KIT_Publico/source-sans-pro.zip" download><button
+                                    class="text-primary hover:text-white transition-colors text-xs uppercase tracking-widest flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">download</span> Arquivos
+                                </button></a> 
+                            </div>
+                            <div>
+                                <p class="text-4xl mb-2">Aa Bb Cc</p>
+                                <p class="text-lg text-gray-400">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+                                <p class="text-lg text-gray-400">a b c d e f g h i j k l m n o p q r s t u v w x y z</p>
+                                <p class="text-lg text-gray-400">0 1 2 3 4 5 6 7 8 9 &amp; @ # % * ! ?</p>
+                            </div>
+                        </div>
+
+                        <div class="p-8 bg-surface border border-border-muted rounded-xl flex flex-col gap-4">
+                            <div class="flex justify-between items-start border-b border-border-muted pb-4">
+                                <div>
+                                    <h3 class="text-white text-xl font-bold font-nova">Nova Condensed</h3>
+                                    <p class="text-gray-400 text-sm mt-1 font-nova">TIPOGRAFIA SECUNDÁRIA</p>
+                                </div>
+                                <a href="img/BRAND KIT_Publico/Nova-Condensed.zip" download> <button
+                                    class="text-primary hover:text-white transition-colors text-xs uppercase tracking-widest flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">download</span> Arquivos
+                                </button></a>
+                            </div>
+                            <div class="font-nova">
+                                <p class="text-4xl mb-2">Aa Bb Cc</p>
+                                <p class="text-lg text-gray-400">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+                                <p class="text-lg text-gray-400">a b c d e f g h i j k l m n o p q r s t u v w x y z</p>
+                                <p class="text-lg text-gray-400">0 1 2 3 4 5 6 7 8 9 &amp; @ # % * ! ?</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
+            </div>
+            <!-- Footer -->
+            <footer
+                class="mt-auto py-6 px-4 md:py-10 md:px-10 border-t border-border-muted flex flex-col md:flex-row items-start md:items-center gap-3 justify-between text-gray-500">
+                <p class="text-xs">Bonin Engenharia e Consultoria © 2026 Todos os direitos reservados</p>
+                <div class="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
+                    <a class="hover:text-white" href="https://www.bonin.eng.br/politica-privacidade/">Política de
+                        Privacidade</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-60 z-40 hidden" onclick="toggleSidebar()"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {});
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('sidebar-open');
+            document.getElementById('sidebar-backdrop').classList.toggle('hidden');
+        }
+    </script>
+</body>
+
+</html>

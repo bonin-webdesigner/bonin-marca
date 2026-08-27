@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Bonin - Assinaturas de E-mail</title>
+    <link rel="icon" type="image/x-icon" href="img/favico.png">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&family=Noto+Sans:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2DA6FF",
+                        "terracotta": "#2DA6FF",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#1a1a1a",
+                        "charcoal": "#121212",
+                        "surface": "#242424",
+                        "border-muted": "#333333"
+                    },
+                    fontFamily: {
+                        "display": ["Source Sans Pro", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Source Sans Pro", "Noto Sans", sans-serif;
+            background: radial-gradient(ellipse 125% 100% at 95% 75%, rgb(100 140 200 / .3) 0%, transparent 55%), radial-gradient(ellipse 90% 75% at 100% 100%, rgb(26 58 110 / .85) 0%, transparent 70%), linear-gradient(160deg, #04050c 0%, #060b17 100%);
+            color: white;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .asset-card {
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+        .asset-card:hover {
+            border-color: #2DA6FF;
+        }
+        @media (max-width: 767px) {
+            #sidebar { display: none; }
+            #sidebar.sidebar-open { display: flex; }
+        }
+    </style>
+</head>
+
+<body class="text-white antialiased">
+    <div class="flex h-screen w-full overflow-hidden">
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 md:static w-72 flex-shrink-0 flex flex-col border-r border-border-muted bg-charcoal p-6 gap-8">
+            <div class="flex items-center gap-3">
+                <img src="img/Logo.webp" width="150" height="auto" alt="Bonin Logo">
+            </div>
+            <nav class="flex flex-col gap-1">
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="manual.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">menu_book</span>
+                    <span class="text-sm font-medium">Manual da Marca e <br>  Paleta de Cores</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="logo.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">text_fields</span>
+                    <span class="text-sm font-medium">Logos e Tipografia</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="paleta.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">note_alt</span>
+                    <span class="text-sm font-medium"> Papéis Timbrados e Capas de Linkedin & Meet Teams</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface text-white" href="assinaturas.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">email</span>
+                    <span class="text-sm font-medium">Assinaturas de E-mail</span>
+                </a>
+                <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-surface transition-colors" href="ppt/documentacao-ppt.html">
+                    <span class="material-symbols-outlined" style="font-size: 20px; font-variation-settings: 'FILL' 1;">developer_guide</span>
+                    <span class="text-sm font-medium">Documentação PPT</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto relative">
+
+            <!-- Mobile Top Bar -->
+            <div class="md:hidden flex items-center justify-between px-4 py-3 bg-charcoal border-b border-border-muted sticky top-0 z-30">
+                <img src="img/Logo.webp" width="100" height="auto" alt="Bonin Logo">
+                <button onclick="toggleSidebar()" class="text-white p-1">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+
+            <!-- Header -->
+            <header class="px-4 md:px-10 py-6 md:py-12 border-b border-border-muted bg-charcoal z-10 backdrop-blur-md bg-opacity-90">
+                <div class="max-w-7xl mx-auto">
+                    <h2 class="text-white text-2xl md:text-4xl font-bold leading-tight tracking-tight">Assinaturas de E-mail</h2>
+                    <p class="text-gray-400 text-base font-normal leading-normal mt-2 max-w-2xl">Mantenha a consistência da marca em todas as comunicações externas com nossas assinaturas padronizadas. Localize seu nome e faça o download da assinatura no formato PNG.</p>
+                </div>
+            </header>
+
+            <div class="p-4 md:p-10 max-w-7xl mx-auto pb-24 space-y-8">
+
+                <!-- Search + Count -->
+                <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+                    <div class="relative w-full sm:w-80">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" style="font-size: 20px;">search</span>
+                        <input id="search" type="text" placeholder="Buscar por nome..."
+                            class="w-full bg-surface border border-border-muted rounded-lg pl-10 pr-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-primary transition-colors" />
+                    </div>
+                    <p id="count" class="text-gray-500 text-sm whitespace-nowrap"></p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div id="grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4"></div>
+
+                <!-- No Results -->
+                <div id="no-results" class="hidden text-center py-20">
+                    <span class="material-symbols-outlined text-gray-700" style="font-size: 48px;">person_search</span>
+                    <p class="text-gray-500 mt-4 text-sm">Nenhuma assinatura encontrada para "<span id="no-results-query"></span>".</p>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="mt-auto py-6 px-4 md:py-10 md:px-10 border-t border-border-muted flex flex-col md:flex-row items-start md:items-center gap-3 justify-between text-gray-500">
+                <p class="text-xs">Bonin Engenharia e Consultoria © 2026 Todos os direitos reservados</p>
+                <div class="flex items-center gap-6 text-xs uppercase tracking-widest font-bold">
+                    <a class="hover:text-white" href="https://www.bonin.eng.br/politica-privacidade/">Política de Privacidade</a>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- Mobile Sidebar Backdrop -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black bg-opacity-60 z-40 hidden" onclick="toggleSidebar()"></div>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('sidebar-open');
+            document.getElementById('sidebar-backdrop').classList.toggle('hidden');
+        }
+
+        function toTitleCase(str) {
+            return str.replace(/\s+/g, ' ').trim().toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+        }
+
+        // [lote folder encoded, filename encoded, display name, download filename]
+        const people = [
+            ["(Lote%201)", "ADAILTON%20JUNIOR.png",            "ADAILTON JUNIOR",            "ADAILTON JUNIOR.png"],
+            ["(Lote%201)", "ADRIANA%20%20BONIN.png",           "ADRIANA BONIN",              "ADRIANA  BONIN.png"],
+            ["(Lote%201)", "ADRIANA%20%20KOBA.png",            "ADRIANA KOBA",               "ADRIANA  KOBA.png"],
+            ["(Lote%201)", "ADRIANO%20%20SILVA.png",           "ADRIANO SILVA",              "ADRIANO  SILVA.png"],
+            ["(Lote%201)", "ALAIDE%20FEITOSA.png",             "ALAIDE FEITOSA",             "ALAIDE FEITOSA.png"],
+            ["(Lote%202)", "ALAN%20SANTOS.png",                "ALAN SANTOS",                "ALAN SANTOS.png"],
+            ["(Lote%202)", "ALINE%20SANTOS.png",               "ALINE SANTOS",               "ALINE SANTOS.png"],
+            ["(Lote%201)", "ANA%20%20CASTANHEIRA.png",         "ANA CASTANHEIRA",            "ANA  CASTANHEIRA.png"],
+            ["(Lote%201)", "ANA%20%20FERREIRA.png",            "ANA FERREIRA",               "ANA  FERREIRA.png"],
+            ["(Lote%201)", "ANA%20FERREIRA.png",               "ANA FERREIRA",               "ANA FERREIRA.png"],
+            ["(Lote%201)", "ANA%20%20MOURA.png",               "ANA MOURA",                  "ANA  MOURA.png"],
+            ["(Lote%201)", "ANA%20%20SANTOS.png",              "ANA SANTOS",                 "ANA  SANTOS.png"],
+            ["(Lote%201)", "ANDRE%20PAIVA.png",                "ANDRE PAIVA",                "ANDRE PAIVA.png"],
+            ["(Lote%201)", "ANDREA%20%20PEREIRA.png",          "ANDREA PEREIRA",             "ANDREA  PEREIRA.png"],
+            ["(Lote%201)", "ANDREIA%20%20SORTINO.png",         "ANDREIA FARIA",            "ANDREIA  SORTINO.png"],
+            ["(Lote%201)", "ANGELA%20%20SANTANA.png",          "ANGELA SANTANA",             "ANGELA  SANTANA.png"],
+            ["(Lote%201)", "ANNIE%20%20CARDOSO.png",           "ANNIE CARDOSO",              "ANNIE  CARDOSO.png"],
+            ["(Lote%201)", "ARIZETE%20%20CARMELINO.png",       "ARIZETE CARMELINO",          "ARIZETE  CARMELINO.png"],
+            ["(Lote%201)", "ARTHUR%20%20GOMES.png",            "ARTHUR GOMES",               "ARTHUR  GOMES.png"],
+            ["(Lote%202)", "ARTHUR%20MOIZINHO.png",            "ARTHUR MOIZINHO",            "ARTHUR MOIZINHO.png"],
+            ["(Lote%201)", "BRUNA%20%20ANDRADE.png",           "BRUNA ANDRADE",              "BRUNA  ANDRADE.png"],
+            ["(Lote%201)", "BRUNA%20%20RIBEIRO.png",           "BRUNA RIBEIRO",              "BRUNA  RIBEIRO.png"],
+            ["(Lote%201)", "BRUNA%20%20SILVA.png",             "BRUNA SILVA",                "BRUNA  SILVA.png"],
+            ["(Lote%201)", "BRUNO%20%20MACHADO.png",           "BRUNO MACHADO",              "BRUNO  MACHADO.png"],
+            ["(Lote%201)", "BRUNO%20RIBEIRO.png",              "BRUNO RIBEIRO",              "BRUNO RIBEIRO.png"],
+            ["(Lote%201)", "BRUNO%20%20SILVA.png",             "BRUNO SILVA",                "BRUNO  SILVA.png"],
+            ["(Lote%201)", "CARLOS%20BERTO.png",               "CARLOS BERTO",               "CARLOS BERTO.png"],
+            ["(Lote%202)", "CARLOS%20LIMA.png",                "CARLOS LIMA",                "CARLOS LIMA.png"],
+            ["(Lote%201)", "CHARLES%20DA%20SILVA.png",         "CHARLES DA SILVA",           "CHARLES DA SILVA.png"],
+            ["(Lote%202)", "CRISTOVAO%20ALCANTARA.png",        "CRISTOVAO ALCANTARA",        "CRISTOVAO ALCANTARA.png"],
+            ["(Lote%201)", "DANIEL%20SANTOS.png",              "DANIEL SANTOS",              "DANIEL SANTOS.png"],
+            ["(Lote%201)", "DAVID%20%20DA%20SILVA.png",        "DAVID DA SILVA",             "DAVID  DA SILVA.png"],
+            ["(Lote%201)", "DIOGO%20NASCIMENTO%20COELHO.png",  "DIOGO NASCIMENTO COELHO",    "DIOGO NASCIMENTO COELHO.png"],
+            ["(Lote%201)", "EDSON%20BARROS%20PIRES.png",       "EDSON BARROS PIRES",         "EDSON BARROS PIRES.png"],
+            ["(Lote%202)", "EDSON%20JUNIOR.png",               "EDSON JUNIOR",               "EDSON JUNIOR.png"],
+            ["(Lote%202)", "EDUARDO%20ARAUJO.png",             "EDUARDO ARAUJO",             "EDUARDO ARAUJO.png"],
+            ["(Lote%201)", "EDUARDO%20TAKAHAMA.png",           "EDUARDO TAKAHAMA",           "EDUARDO TAKAHAMA.png"],
+            ["(Lote%201)", "ELIANA%20PRALON.png",              "ELIANA PRALON",              "ELIANA PRALON.png"],
+            ["(Lote%202)", "ELIAS%20SILVA.png",                "ELIAS SILVA",                "ELIAS SILVA.png"],
+            ["(Lote%201)", "ELISABETTA%20MORELLO.png",         "ELISABETTA MORELLO",         "ELISABETTA MORELLO.png"],
+            ["(Lote%201)", "ELITOM%20MARQUES.png",             "ELITOM MARQUES",             "ELITOM MARQUES.png"],
+            ["(Lote%201)", "ELLEN%20SILVA.png",                "ELLEN SILVA",                "ELLEN SILVA.png"],
+            ["(Lote%201)", "ERICA%20GOLVEA.png",               "ERICA GOLVEA",               "ERICA GOLVEA.png"],
+            ["(Lote%201)", "ERIKA%20CARVALHO.png",             "ERIKA CARVALHO",             "ERIKA CARVALHO.png"],
+            ["(Lote%201)", "EUGENIO%20DINIZ.png",              "EUGENIO DINIZ",              "EUGENIO DINIZ.png"],
+            ["(Lote%201)", "FABIANE%20MOITINHO.png",           "FABIANE MOITINHO",           "FABIANE MOITINHO.png"],
+            ["(Lote%201)", "FABIO%20DIOGO.png",                "FABIO DIOGO",                "FABIO DIOGO.png"],
+            ["(Lote%201)", "FELIPE%20PACHECO.png",             "FELIPE PACHECO",             "FELIPE PACHECO.png"],
+            ["(Lote%202)", "FELIPE%20PEREIRA.png",             "FELIPE PEREIRA",             "FELIPE PEREIRA.png"],
+            ["(Lote%201)", "FERNANDA%20CAMPOS.png",            "FERNANDA CAMPOS",            "FERNANDA CAMPOS.png"],
+            ["(Lote%201)", "FLAVIO%20HADLICH.png",             "FLAVIO HADLICH",             "FLAVIO HADLICH.png"],
+            ["(Lote%201)", "FOSCO%20PETRI.png",                "FOSCO PETRI",                "FOSCO PETRI.png"],
+            ["(Lote%202)", "FRANCISCO%20LIMA.png",             "FRANCISCO LIMA",             "FRANCISCO LIMA.png"],
+            ["(Lote%201)", "FRANCISCO%20MOURA.png",            "FRANCISCO MOURA",            "FRANCISCO MOURA.png"],
+            ["(Lote%201)", "GABRIEL%20LIMA.png",               "GABRIEL LIMA",               "GABRIEL LIMA.png"],
+            ["(Lote%201)", "GABRIEL%20MORENO.png",             "GABRIEL MORENO",             "GABRIEL MORENO.png"],
+            ["(Lote%202)", "GABRIELE%20SILVA.png",             "GABRIELE SILVA",             "GABRIELE SILVA.png"],
+            ["(Lote%201)", "GIOVANNA%20TEIXEIRA.png",          "GIOVANNA TEIXEIRA",          "GIOVANNA TEIXEIRA.png"],
+            ["(Lote%201)", "GIOVANNI%20PORTO.png",             "GIOVANNI PORTO",             "GIOVANNI PORTO.png"],
+            ["(Lote%202)", "GUILHERME%20FERFILA.png",          "GUILHERME FERFILA",          "GUILHERME FERFILA.png"],
+            ["(Lote%201)", "HELOISA%20MENEGOTTO.png",          "HELOISA MENEGOTTO",          "HELOISA MENEGOTTO.png"],
+            ["(Lote%201)", "HENRIQUE%20DE%20AGUIAR.png",       "HENRIQUE DE AGUIAR",         "HENRIQUE DE AGUIAR.png"],
+            ["(Lote%201)", "HIGSON%20DOS%20SANTOS.png",        "HIGSON DOS SANTOS",          "HIGSON DOS SANTOS.png"],
+            ["(Lote%201)", "HUDSON%20SANTOS.png",              "HUDSON SANTOS",              "HUDSON SANTOS.png"],
+            ["(Lote%202)", "ISABELY%20CUNHA.png",              "ISABELY CUNHA",              "ISABELY CUNHA.png"],
+            ["(Lote%201)", "JENIFER%20SOUZA.png",              "JENIFER SOUZA",              "JENIFER SOUZA.png"],
+            ["(Lote%201)", "JHENNEFER%20%20PEREIRA.png",       "JHENNEFER PEREIRA",          "JHENNEFER  PEREIRA.png"],
+            ["(Lote%201)", "JOAO%20CARVALHAIS.png",            "JOAO CARVALHAIS",            "JOAO CARVALHAIS.png"],
+            ["(Lote%202)", "JOAO%20CARVALHAIS.png",            "JOAO CARVALHAIS",            "JOAO CARVALHAIS.png"],
+            ["(Lote%201)", "JOAO%20FERNANDES.png",             "JOAO FERNANDES",             "JOAO FERNANDES.png"],
+            ["(Lote%201)", "JOAO%20FILHO.png",                 "JOAO FILHO",                 "JOAO FILHO.png"],
+            ["(Lote%202)", "JOAO%20SANTOS.png",                "JOAO SANTOS",                "JOAO SANTOS.png"],
+            ["(Lote%201)", "JOCIANNE%20COTTS.png",             "JOCIANNE COTTS",             "JOCIANNE COTTS.png"],
+            ["(Lote%201)", "JULIANA%20DE%20SOUZA.png",         "JULIANA DE SOUZA",           "JULIANA DE SOUZA.png"],
+            ["(Lote%202)", "JULIANA%20NASCIMENTO.png",         "JULIANA NASCIMENTO",         "JULIANA NASCIMENTO.png"],
+            ["(Lote%201)", "KAMILLY%20DO%20PRADO.png",         "KAMILLY DO PRADO",           "KAMILLY DO PRADO.png"],
+            ["(Lote%202)", "KAMILY%20SANTOS.png",              "KAMILY SANTOS",              "KAMILY SANTOS.png"],
+            ["(Lote%201)", "KARINA%20DE%20OLIVEIRA.png",       "KARINA DE OLIVEIRA",         "KARINA DE OLIVEIRA.png"],
+            ["(Lote%201)", "KARLA%20DE%20SOUZA.png",           "KARLA DE SOUZA",             "KARLA DE SOUZA.png"],
+            ["(Lote%201)", "KATYA%20DOS%20SANTOS.png",         "KATYA DOS SANTOS",           "KATYA DOS SANTOS.png"],
+            ["(Lote%201)", "KAUA%20DE%20VASCONCELLOS.png",     "KAUA DE VASCONCELLOS",       "KAUA DE VASCONCELLOS.png"],
+            ["(Lote%202)", "KLAGES%20SANTOS.png",              "KLAGES SANTOS",              "KLAGES SANTOS.png"],
+            ["(Lote%202)", "LAERTE%20DE%20BARROS.png",         "LAERTE DE BARROS",           "LAERTE DE BARROS.png"],
+            ["(Lote%201)", "LAISA%20ALVES.png",                "LAISA ALVES",                "LAISA ALVES.png"],
+            ["(Lote%202)", "LAIRSON%20BARBOSA.png",            "LAIRSON BARBOSA",            "LAIRSON BARBOSA.png"],
+            ["(Lote%201)", "LAUANE%20SANTOS.png",              "LAUANE SANTOS",              "LAUANE SANTOS.png"],
+            ["(Lote%201)", "LAYZA%20ALVES.png",                "LAYZA ALVES",                "LAYZA ALVES.png"],
+            ["(Lote%201)", "LAYZA%20SANTOS.png",               "LAYZA SANTOS",               "LAYZA SANTOS.png"],
+            ["(Lote%202)", "LEONARDO%20OLIVEIRA%20DA%20COSTA.png", "LEONARDO OLIVEIRA DA COSTA", "LEONARDO OLIVEIRA DA COSTA.png"],
+            ["(Lote%201)", "LEONARDO%20ROCHA.png",             "LEONARDO ROCHA",             "LEONARDO ROCHA.png"],
+            ["(Lote%202)", "LEONARDO%20TAKAKI.png",            "LEONARDO TAKAKI",            "LEONARDO TAKAKI.png"],
+            ["(Lote%201)", "LETICIA%20MARQUES.png",            "LETICIA MARQUES",            "LETICIA MARQUES.png"],
+            ["(Lote%201)", "LIVIA%20VILANOVA.png",             "LIVIA VILANOVA",             "LIVIA VILANOVA.png"],
+            ["(Lote%202)", "LUCAS%20OLIVEIRA.png",             "LUCAS OLIVEIRA",             "LUCAS OLIVEIRA.png"],
+            ["(Lote%201)", "LUCAS%20%20PEREIRA.png",           "LUCAS PEREIRA",              "LUCAS  PEREIRA.png"],
+            ["(Lote%201)", "LUIS%20VIDAL.png",                 "LUIS VIDAL",                 "LUIS VIDAL.png"],
+            ["(Lote%201)", "MARCELA%20SENA.png",               "MARCELA SENA",               "MARCELA SENA.png"],
+            ["(Lote%201)", "MARCELO%20ROCHA.png",              "MARCELO ROCHA",              "MARCELO ROCHA.png"],
+            ["(Lote%201)", "MARCOS%20LIMA.png",                "MARCOS LIMA",                "MARCOS LIMA.png"],
+            ["(Lote%202)", "MARIA%20CASARES.png",              "MARIA CASARES",              "MARIA CASARES.png"],
+            ["(Lote%202)", "MARIA%20RESENDE.png",              "MARIA RESENDE",              "MARIA RESENDE.png"],
+            ["(Lote%202)", "MARINA%20OLIVEIRA.png",            "MARINA OLIVEIRA",            "MARINA OLIVEIRA.png"],
+            ["(Lote%202)", "MATHEUS%20CANAZART.png",           "MATHEUS CANAZART",           "MATHEUS CANAZART.png"],
+            ["(Lote%202)", "MONICA%20RAMGRAB.png",             "MONICA RAMGRAB",             "MONICA RAMGRAB.png"],
+            ["(Lote%202)", "PRISCILA%20SILVA.png",             "PRISCILA SILVA",             "PRISCILA SILVA.png"],
+            ["(Lote%202)", "RAFAEL%20DE%20SA.png",             "RAFAEL DE SA",               "RAFAEL DE SA.png"],
+            ["(Lote%202)", "RAFAEL%20SILVA.png",               "RAFAEL SILVA",               "RAFAEL SILVA.png"],
+            ["(Lote%202)", "RAQUEL%20SILVA.png",               "RAQUEL SILVA",               "RAQUEL SILVA.png"],
+            ["(Lote%202)", "RAUL%20PEREIRA.png",               "RAUL PEREIRA",               "RAUL PEREIRA.png"],
+            ["(Lote%202)", "RENAN%20NERI.png",                 "RENAN NERI",                 "RENAN NERI.png"],
+            ["(Lote%202)", "RENATO%20ALMEIDA.png",             "RENATO ALMEIDA",             "RENATO ALMEIDA.png"],
+            ["(Lote%202)", "RENATO%20FREITAS.png",             "RENATO FREITAS",             "RENATO FREITAS.png"],
+            ["(Lote%202)", "ROBERTA%20BRITO.png",              "ROBERTA BRITO",              "ROBERTA BRITO.png"],
+            ["(Lote%202)", "RONALDO%20HUNG.png",               "RONALDO HUNG",               "RONALDO HUNG.png"],
+            ["(Lote%202)", "SIDNEY%20CAMPOS.png",              "SIDNEY CAMPOS",              "SIDNEY CAMPOS.png"],
+            ["(Lote%202)", "SILVANA%20SILVA.png",              "SILVANA SILVA",              "SILVANA SILVA.png"],
+            ["(Lote%202)", "SIMONE%20ALVES.png",               "SIMONE ALVES",               "SIMONE ALVES.png"],
+            ["(Lote%202)", "TACIANA%20CAROFENE.png",           "TACIANA CAROFENE",           "TACIANA CAROFENE.png"],
+            ["(Lote%202)", "TATIANA%20%20ARABI.png",           "TATIANA ARABI",              "TATIANA  ARABI.png"],
+            ["(Lote%202)", "THAYANNE%20SOUZA.png",             "THAYANNE SOUZA",             "THAYANNE SOUZA.png"],
+            ["(Lote%202)", "THIAGO%20DELENA.png",              "THIAGO DELENA",              "THIAGO DELENA.png"],
+            ["(Lote%202)", "UNILSON%20SANTOS.png",             "UNILSON SANTOS",             "UNILSON SANTOS.png"],
+            ["(Lote%202)", "VICTOR%20ANDRADE.png",             "VICTOR ANDRADE",             "VICTOR ANDRADE.png"],
+            ["(Lote%202)", "VICTOR%20BELARMINO.png",           "VICTOR BELARMINO",           "VICTOR BELARMINO.png"],
+            ["(Lote%202)", "VICTORIA%20INACIO.png",            "VICTORIA INACIO",            "VICTORIA INACIO.png"],
+            ["(Lote%202)", "VITOR%20ALVES.png",                "VITOR ALVES",                "VITOR ALVES.png"],
+            ["(Lote%202)", "VIVIAN%20FERREIRA.png",            "VIVIAN FERREIRA",            "VIVIAN FERREIRA.png"],
+            ["(Lote%202)", "WEDSON%20JUNIOR.png",              "WEDSON JUNIOR",              "WEDSON JUNIOR.png"],
+            ["(Lote%202)", "WESLEY%20LIMA.png",                "WESLEY LIMA",                "WESLEY LIMA.png"],
+            ["(Lote%203)", "ANDRESSA%20SANTOS.png",            "ANDRESSA SANTOS",            "ANDRESSA SANTOS.png"],
+            ["(Lote%203)", "ANTONIO%20MATOS.png",              "ANTONIO MATOS",              "ANTONIO MATOS.png"],
+            ["(Lote%203)", "CARLOS%20%20COSTA.png",            "CARLOS COSTA",               "CARLOS  COSTA.png"],
+            ["(Lote%203)", "CAROLINA%20CASADO.png",            "CAROLINA CASADO",            "CAROLINA CASADO.png"],
+            ["(Lote%203)", "DIONY%20SILVA.png",                "DIONY SILVA",                "DIONY SILVA.png"],
+            ["(Lote%203)", "FABIO%20SOUZA.png",                "FABIO SOUZA",                "FABIO SOUZA.png"],
+            ["(Lote%203)", "FERNANDA%20PIMENTEL.png",          "FERNANDA PIMENTEL",          "FERNANDA PIMENTEL.png"],
+            ["(Lote%203)", "FERNANDO%20FAGUNDES.png",          "FERNANDO FAGUNDES",          "FERNANDO FAGUNDES.png"],
+            ["(Lote%203)", "GEAN%20SOUZA.png",                 "GEAN SOUZA",                 "GEAN SOUZA.png"],
+            ["(Lote%203)", "GUSTAVO%20MORENO.png",             "GUSTAVO MORENO",             "GUSTAVO MORENO.png"],
+            ["(Lote%203)", "JAMERSON%20BATISTA.png",           "JAMERSON BATISTA",           "JAMERSON BATISTA.png"],
+            ["(Lote%203)", "KAUE%20ARCANJO.png",               "KAUE ARCANJO",               "KAUE ARCANJO.png"],
+            ["(Lote%203)", "KEVIN%20PEREIRA.png",              "KEVIN PEREIRA",              "KEVIN PEREIRA.png"],
+            ["(Lote%203)", "LUCAS%20RODRIGUES.png",            "LUCAS RODRIGUES",            "LUCAS RODRIGUES.png"],
+            ["(Lote%203)", "PAULO%20SILVA.png",                "PAULO SILVA",                "PAULO SILVA.png"],
+            ["(Lote%203)", "PIETRA%20MANZALLI.png",            "PIETRA MANZALLI",            "PIETRA MANZALLI.png"],
+            ["(Lote%203)", "WALDIR%20OLIVEIRA.png",            "WALDIR OLIVEIRA",            "WALDIR OLIVEIRA.png"],
+        ];
+
+        function renderCards(filter) {
+            const q = (filter || '').toLowerCase().trim();
+            const filtered = q ? people.filter(p => p[2].toLowerCase().includes(q)) : people;
+
+            const grid        = document.getElementById('grid');
+            const noResults   = document.getElementById('no-results');
+            const countEl     = document.getElementById('count');
+            const queryEl     = document.getElementById('no-results-query');
+
+            countEl.textContent = filtered.length + (filtered.length === 1 ? ' assinatura' : ' assinaturas');
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                queryEl.textContent = filter;
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            grid.innerHTML = filtered.map(([lote, file, name, dl]) => {
+                const src         = lote + '/' + file;
+                const displayName = toTitleCase(name);
+                const fallback    = `this.closest('.img-wrap').innerHTML='<span class=\\'material-symbols-outlined text-gray-600\\' style=\\'font-size:40px\\'>image_not_supported</span>'`;
+                return `
+                <div class="asset-card flex flex-col bg-surface border border-border-muted rounded-lg overflow-hidden group">
+                    <div class="img-wrap aspect-video bg-background-dark flex items-center justify-center p-3 relative overflow-hidden">
+                        <img src="${src}" alt="Assinatura de ${displayName}"
+                             class="max-w-full max-h-full object-contain"
+                             loading="lazy"
+                             onerror="${fallback}">
+                        <div class="absolute inset-0 bg-charcoal bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 pointer-events-none"></div>
+                    </div>
+                    <div class="p-3 flex flex-col gap-2.5 flex-grow justify-between bg-surface">
+                        <div class="flex items-start justify-between gap-2">
+                            <h4 class="text-white font-bold text-sm leading-tight">${displayName}</h4>
+                            <span class="bg-border-muted text-gray-400 text-xs px-1.5 py-0.5 rounded uppercase tracking-wider font-medium flex-shrink-0">PNG</span>
+                        </div>
+                        <a href="${src}" download="${dl}"
+                           class="w-full flex items-center justify-center gap-1.5 bg-primary text-charcoal font-bold text-xs uppercase tracking-wider py-2 px-3 rounded hover:brightness-110 active:scale-95 transition-all duration-150">
+                            <span class="material-symbols-outlined" style="font-size:15px; font-variation-settings:'FILL' 1,'wght' 700">download</span>
+                            Baixar
+                        </a>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        document.getElementById('search').addEventListener('input', function () {
+            renderCards(this.value);
+        });
+
+        renderCards();
+    </script>
+</body>
+
+</html>
